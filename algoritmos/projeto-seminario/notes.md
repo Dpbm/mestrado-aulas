@@ -4,6 +4,7 @@
 - MPS has less cost than TN but it's an aproximated version of TN.
 - TN always return the exact output.
 - Can hold more qubits than Statevec.
+- Are a different way to see a quantum circuit.
 
 ---
 
@@ -58,3 +59,4 @@ The path computation excludes some tensors and also unroll some to exclude the m
 - [https://www.quera.com/glossary/tensor-networks](https://www.quera.com/glossary/tensor-networks)
 - [https://quantumcomputing.stackexchange.com/questions/4104/what-can-tensor-networks-mean-for-quantum-computing](https://quantumcomputing.stackexchange.com/questions/4104/what-can-tensor-networks-mean-for-quantum-computing)
 - [https://qiskit.github.io/qiskit-aer/stubs/qiskit_aer.AerSimulator.html](https://qiskit.github.io/qiskit-aer/stubs/qiskit_aer.AerSimulator.html)
+- [https://www.azoquantum.com/Article.aspx?ArticleID=420](https://www.azoquantum.com/Article.aspx?ArticleID=420)

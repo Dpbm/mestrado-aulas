@@ -1,0 +1,40 @@
+## Google Scholar
+
+### Terms: quantum tree tensor simulator "Tree Tensor" (2022-2026) - Sorted by Relevance
+
+- [ ] [Simulating quantum circuits with tree tensor networks using density-matrix renormalization group algorithm](https://journals.aps.org/prb/abstract/10.1103/64hd-q4z5)
+- [ ] [Numerical simulation of long-range open quantum many-body dynamics with tree tensor networks](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.109.022420)
+- [ ] [Optimal tree tensor network operators for tensor network simulations: Applications to open quantum systems](https://pubs.aip.org/aip/jcp/article-abstract/161/5/054116/3306704/Optimal-tree-tensor-network-operators-for-tensor?redirectedFrom=fulltext)
+- [ ] [QuTree: A tree tensor network package](https://pubs.aip.org/aip/jcp/article-abstract/160/11/112501/3275717/QuTree-A-tree-tensor-network-package?redirectedFrom=fulltext)
+- [ ] [pyTTN: An open-source toolbox for open and closed system quantum dynamics simulations using tree tensor networks](https://pubs.aip.org/aip/jcp/article-abstract/163/20/202501/3373189/pyTTN-An-open-source-toolbox-for-open-and-closed?redirectedFrom=fulltext)
+- [ ] [Constructing Optimal Contraction Trees for Tensor Network Quantum Circuit Simulation](https://ieeexplore.ieee.org/abstract/document/9926353)
+- [ ] [Tensor Network Quantum Virtual Machine for Simulating Quantum Circuits at Exascale](https://dl.acm.org/doi/full/10.1145/3547334)
+- [ ] [Implementation of Tensor Network Simulation TN-Sim under NWQ-Sim](https://ieeexplore.ieee.org/abstract/document/11196314)
+- [ ] [Tensor networks for quantum computing](https://www.nature.com/articles/s42254-025-00853-1)
+- [ ] [Jet: Fast quantum circuit simulations with parallel task-based tensor-network contraction](https://quantum-journal.org/papers/q-2022-05-09-709/)
+- [ ] [Tensor Network Techniques for Quantum Computation](https://library.oapen.org/handle/20.500.12657/96026)
+- [ ] [Quantum Simulators and Applications on Quantum Framework](https://ieeexplore.ieee.org/abstract/document/11249990)
+- [ ] [Large-scale quantum annealing simulation with tensor networks and belief propagation](https://arxiv.org/abs/2409.12240)
+- [ ] [Quantum-Classical Computing via Tensor Networks](https://arxiv.org/abs/2410.15080)
+- [ ] [Efficient tensor-network simulations of weakly-measured quantum circuits](https://arxiv.org/abs/2510.07211)
+- [ ] [Enabling large-depth simulation of noisy quantum circuits with positive tensor networks](https://arxiv.org/abs/2403.00152)
+- [ ] [Dynamical cluster-based strategy for improving tensor network algorithms in quantum circuit simulations](https://arxiv.org/abs/2502.19289)
+- [ ] [Quantum circuit simulation with a local time-dependent variational principle](https://www.researchsquare.com/article/rs-8196476/v1)
+- [ ] [Approximate simulation of complex quantum circuits using sparse tensors](https://arxiv.org/abs/2602.04011)
+- [ ] [Density matrix representation of hybrid tensor networks for noisy quantum devices](https://quantum-journal.org/papers/q-2025-08-07-1823/)
+- [ ] [Quantum computing simulation acceleration and error mitigation method and system based on tensor network topology optimization](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/14133/1413303/Quantum-computing-simulation-acceleration-and-error-mitigation-method-and-system/10.1117/12.3108481.short)
+- [ ] [ExaTN: Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale](https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2022.838601/full#s2)
+
+### Terms: quantum simulator "Tree Tensor" -"machine learning", -"many-body", -Ising (2022-2026) - Sorted by relevance
+
+- [ ] [A PEPS Plugin for TNQVM](https://ieeexplore.ieee.org/abstract/document/10313902)
+- [ ] [Tensor Network-Based Continuous Variable Quantum Circuit Optimization for Preparation of GKP State](https://ieeexplore.ieee.org/abstract/document/10313797)
+- [ ] [On the Optimal Linear Contraction Order of Tree Tensor Networks, and Beyond](https://epubs.siam.org/doi/abs/10.1137/23M161286X)
+
+## By Hand
+
+- [ ] [Hyper-optimized tensor network contraction](https://arxiv.org/pdf/2002.01935) <- The one from Nvidia
+- [ ] [Tensor Networks in a Nutshell](https://arxiv.org/pdf/1708.00006)
+- [ ] [Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks](https://arxiv.org/pdf/1603.03039)
+- [ ] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
+
