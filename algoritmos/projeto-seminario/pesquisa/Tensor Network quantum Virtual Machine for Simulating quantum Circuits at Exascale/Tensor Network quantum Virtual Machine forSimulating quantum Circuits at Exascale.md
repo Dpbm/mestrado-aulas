@@ -1,7 +1,7 @@
 link: https://dl.acm.org/doi/full/10.1145/3547334
 
 ---
-tags: []
+tags: [Simulator, Simulator Backend, HPC,  framework, MPS, Tensor Network]
 
 ---
 ## What they did?
@@ -42,8 +42,3 @@ They aimed to make it flexible and suited for any kind of circuit and work on di
 
 * It also has density matrix simulation for noisy
 *  locally purified matrix product state (LP-MPS) -> a way to factorize the density matrix into MPS
-
-
----
-
-## Complexity
