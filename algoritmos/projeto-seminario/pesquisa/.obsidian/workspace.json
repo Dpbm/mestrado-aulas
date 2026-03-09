@@ -11,10 +11,14 @@
             "id": "a5320102952d6f1c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale/Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale"
             }
           }
         ]
@@ -179,9 +183,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "6558a340613a95a5",
+  "active": "a5320102952d6f1c",
   "lastOpenFiles": [
+    "Template.md",
     "Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/Jet - Fast quantum circuit simulations with parallel task-based tensor-network contraction.md",
+    "Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale/Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale.md",
+    "Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale",
     "Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/contractions.png",
     "Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/slicing.png",
     "Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/overall-algorithm.png",

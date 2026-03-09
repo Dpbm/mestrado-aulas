@@ -8,7 +8,7 @@
 - [ ] [QuTree: A tree tensor network package](https://pubs.aip.org/aip/jcp/article-abstract/160/11/112501/3275717/QuTree-A-tree-tensor-network-package?redirectedFrom=fulltext)
 - [ ] [pyTTN: An open-source toolbox for open and closed system quantum dynamics simulations using tree tensor networks](https://pubs.aip.org/aip/jcp/article-abstract/163/20/202501/3373189/pyTTN-An-open-source-toolbox-for-open-and-closed?redirectedFrom=fulltext)
 - [ ] [Constructing Optimal Contraction Trees for Tensor Network Quantum Circuit Simulation](https://ieeexplore.ieee.org/abstract/document/9926353)
-- [ ] [Tensor Network Quantum Virtual Machine for Simulating Quantum Circuits at Exascale](https://dl.acm.org/doi/full/10.1145/3547334)
+- [X] [Tensor Network Quantum Virtual Machine for Simulating Quantum Circuits at Exascale](https://dl.acm.org/doi/full/10.1145/3547334)
 - [ ] [Implementation of Tensor Network Simulation TN-Sim under NWQ-Sim](https://ieeexplore.ieee.org/abstract/document/11196314)
 - [ ] [Tensor networks for quantum computing](https://www.nature.com/articles/s42254-025-00853-1)
 - [X] [Jet: Fast quantum circuit simulations with parallel task-based tensor-network contraction](https://quantum-journal.org/papers/q-2022-05-09-709/)
@@ -34,6 +34,8 @@
 - [ ] [Quantum computational advantage via high-dimensional Gaussian boson sampling](https://www.science.org/doi/10.1126/sciadv.abi7894)
 - [ ] [Tensor Network Quantum Simulator With Step-Dependent Parallelization](https://arxiv.org/abs/2012.02430)
 - [ ] [Random insights into the complexity of two-dimensional tensor network calculations](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.109.235102)
+- [ ] [METIS](https://docs.icer.msu.edu/available_software/detail/METIS/)
+- [ ] [Validating quantum-classical programming models with tensor network simulations](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0206704)
 
 
 ## By Hand
