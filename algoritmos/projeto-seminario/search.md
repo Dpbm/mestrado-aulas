@@ -44,7 +44,11 @@
 - [ ] [A Practical Introduction to Tensor Networks: Matrix Product States and Projected Entangled Pair States](https://arxiv.org/abs/1306.2164)
 - [ ] [High-Quality Hypergraph Partitioning](https://dl.acm.org/doi/10.1145/3529090)
 - [ ] [Tensor Networks for Big Data Analytics and Large-Scale Optimization Problems](https://arxiv.org/abs/1407.3124)
-- [ ] [Algorithms for Tensor Network Contraction Ordering](https://arxiv.org/abs/2001.08063)
+- [X] [Algorithms for Tensor Network Contraction Ordering](https://arxiv.org/abs/2001.08063)
+- [ ] [Efficient tree tensor network states (TTNS) for quantum chemistry: Generalizations of the density matrix renormalization group algorithm](https://pubs.aip.org/aip/jcp/article-abstract/138/13/134113/72146/Efficient-tree-tensor-network-states-TTNS-for?redirectedFrom=fulltext)
+- [ ] [Towards a polynomial algorithm for optimal contraction sequence of tensor networks from trees](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.100.043309)
+- [ ] [Tensor Network Renormalization](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.180405)
+- [ ] [Density matrix formulation for quantum renormalization groups](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.69.2863)
 
 
 ## By Hand
