@@ -15,8 +15,8 @@
 - [ ] [Tensor Network Techniques for Quantum Computation](https://library.oapen.org/handle/20.500.12657/96026)
 - [ ] [Quantum Simulators and Applications on Quantum Framework](https://ieeexplore.ieee.org/abstract/document/11249990)
 - [ ] [Large-scale quantum annealing simulation with tensor networks and belief propagation](https://arxiv.org/abs/2409.12240)
-- [ ] [Quantum-Classical Computing via Tensor Networks](https://arxiv.org/abs/2410.15080)
-- [ ] [Efficient tensor-network simulations of weakly-measured quantum circuits](https://arxiv.org/abs/2510.07211)
+- [X] [Quantum-Classical Computing via Tensor Networks](https://arxiv.org/abs/2410.15080)
+- [X] [Efficient tensor-network simulations of weakly-measured quantum circuits](https://arxiv.org/abs/2510.07211)
 - [ ] [Enabling large-depth simulation of noisy quantum circuits with positive tensor networks](https://arxiv.org/abs/2403.00152)
 - [ ] [Dynamical cluster-based strategy for improving tensor network algorithms in quantum circuit simulations](https://arxiv.org/abs/2502.19289)
 - [ ] [Quantum circuit simulation with a local time-dependent variational principle](https://www.researchsquare.com/article/rs-8196476/v1)
@@ -36,6 +36,15 @@
 - [ ] [Random insights into the complexity of two-dimensional tensor network calculations](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.109.235102)
 - [ ] [METIS](https://docs.icer.msu.edu/available_software/detail/METIS/)
 - [ ] [Validating quantum-classical programming models with tensor network simulations](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0206704)
+- [ ] [The density-matrix renormalization group in the age of matrix product states](https://arxiv.org/abs/1008.3477)
+- [ ] [Matrix Product States and Projected Entangled Pair States: Concepts, Symmetries, and Theorems](https://arxiv.org/abs/2011.12127)
+- [ ] [The density-matrix renormalization group](https://arxiv.org/abs/cond-mat/0409292)
+- [ ] [The ITensor Software Library for Tensor Network Calculations](https://arxiv.org/abs/2007.14822)
+- [ ] [Tensor networks for complex quantum systems](https://www.nature.com/articles/s42254-019-0086-7)
+- [ ] [A Practical Introduction to Tensor Networks: Matrix Product States and Projected Entangled Pair States](https://arxiv.org/abs/1306.2164)
+- [ ] [High-Quality Hypergraph Partitioning](https://dl.acm.org/doi/10.1145/3529090)
+- [ ] [Tensor Networks for Big Data Analytics and Large-Scale Optimization Problems](https://arxiv.org/abs/1407.3124)
+- [ ] [Algorithms for Tensor Network Contraction Ordering](https://arxiv.org/abs/2001.08063)
 
 
 ## By Hand

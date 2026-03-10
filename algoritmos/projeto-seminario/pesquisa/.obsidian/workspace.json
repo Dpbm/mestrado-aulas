@@ -11,10 +11,14 @@
             "id": "e50f6b994d69fa62",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Quantum-Classical Computing via Tensor Networks/Quantum-Classical Computing via Tensor Networks.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Quantum-Classical Computing via Tensor Networks"
             }
           }
         ]
@@ -181,10 +185,12 @@
   },
   "active": "e50f6b994d69fa62",
   "lastOpenFiles": [
-    "Efficient tensor-network simulations of weakly-measured quantum circuits/Efficient tensor-network simulations of weakly-measured quantum circuits.md",
-    "Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale/Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale.md",
-    "Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/Jet - Fast quantum circuit simulations with parallel task-based tensor-network contraction.md",
     "Template.md",
+    "Quantum-Classical Computing via Tensor Networks/Quantum-Classical Computing via Tensor Networks.md",
+    "Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale/Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale.md",
+    "Quantum-Classical Computing via Tensor Networks",
+    "Efficient tensor-network simulations of weakly-measured quantum circuits/Efficient tensor-network simulations of weakly-measured quantum circuits.md",
+    "Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/Jet - Fast quantum circuit simulations with parallel task-based tensor-network contraction.md",
     "Efficient tensor-network simulations of weakly-measured quantum circuits",
     "Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale",
     "Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/contractions.png",
