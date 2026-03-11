@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/Tensor Network Quantum Simulator With Step-Dependent Parallelization.md",
+                "file": "articles/Tensor Networks for Quantum Machine Learning/Tensor Networks for Quantum Machine Learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tensor Network Quantum Simulator With Step-Dependent Parallelization"
+              "title": "Tensor Networks for Quantum Machine Learning"
             }
           }
         ]
@@ -185,6 +185,14 @@
   },
   "active": "941c7c96d425415c",
   "lastOpenFiles": [
+    "articles/Tensor Networks for Quantum Machine Learning/MERA.png",
+    "articles/Tensor Networks for Quantum Machine Learning/TTN.png",
+    "articles/Tensor Networks for Quantum Machine Learning/MPS.png",
+    "articles/Tensor Networks for Quantum Machine Learning/PEPS.png",
+    "Template.md",
+    "articles/Tensor Networks for Quantum Machine Learning/Tensor Networks for Quantum Machine Learning.md",
+    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/Tensor Network Quantum Simulator With Step-Dependent Parallelization.md",
+    "articles/Tensor Networks for Quantum Machine Learning",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/algo1.png",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/algo2.png",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/algo3.png",
@@ -192,12 +200,6 @@
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/results1.png",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/results2.png",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/results3.png",
-    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/tensors1.png",
-    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/tensors2.png",
-    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/tensors3.png",
-    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/complexity1.png",
-    "Template.md",
-    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/Tensor Network Quantum Simulator With Step-Dependent Parallelization.md",
     "articles/Algorithms for Tensor Network Contraction Ordering/Algorithms for Tensor Network Contraction Ordering.md",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization",
     "articles/Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale/Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale.md",

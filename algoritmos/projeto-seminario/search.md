@@ -6,7 +6,7 @@
 
 ## Papers
 
-### Overall Relevance
+### Help classification and Understanding
 
 - [ ] [Hyper-optimized tensor network contraction](https://arxiv.org/pdf/2002.01935)
 - [ ] [Tensor Networks in a Nutshell](https://arxiv.org/pdf/1708.00006)
@@ -14,11 +14,8 @@
 - [ ] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
 - [ ] [Lectures on Quantum Tensor Networks](https://arxiv.org/abs/1912.10049)
 - [ ] [A Practical Introduction to Tensor Networks: Matrix Product States and Projected Entangled Pair States](https://arxiv.org/abs/1306.2164)
-
-### Help classification
-
 - [ ] [Tensor networks for quantum computing](https://www.nature.com/articles/s42254-025-00853-1)
-- [ ] [Tensor networks for quantum machine learning](https://arxiv.org/abs/2303.11735)
+- [x] [Tensor networks for quantum machine learning](https://arxiv.org/abs/2303.11735)
 - [ ] [The density-matrix renormalization group in the age of matrix product states](https://arxiv.org/abs/1008.3477)
 - [ ] [Matrix Product States and Projected Entangled Pair States: Concepts, Symmetries, and Theorems](https://arxiv.org/abs/2011.12127)
 - [ ] [The density-matrix renormalization group](https://arxiv.org/abs/cond-mat/0409292)
