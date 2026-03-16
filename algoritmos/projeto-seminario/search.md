@@ -9,7 +9,7 @@
 ### Help classification and Understanding
 
 - [ ] [Hyper-optimized tensor network contraction](https://arxiv.org/pdf/2002.01935)
-- [ ] [Tensor Networks in a Nutshell](https://arxiv.org/pdf/1708.00006)
+- [X] [Tensor Networks in a Nutshell](https://arxiv.org/pdf/1708.00006)
 - [ ] [Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks](https://arxiv.org/pdf/1603.03039)
 - [ ] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
 - [ ] [Lectures on Quantum Tensor Networks](https://arxiv.org/abs/1912.10049)

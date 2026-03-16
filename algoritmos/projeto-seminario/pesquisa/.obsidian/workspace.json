@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/Quantum Tensor Networks in a Nutshell/Quantum Tensor Networks in a Nutshell.md",
+                "file": "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quantum Tensor Networks in a Nutshell"
+              "title": "Density matrix representation of hybrid tensor networks for noisy quantum devices"
             }
           }
         ]
@@ -185,6 +185,10 @@
   },
   "active": "8697588540c08088",
   "lastOpenFiles": [
+    "Template.md",
+    "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
+    "articles/Quantum Tensor Networks in a Nutshell/Quantum Tensor Networks in a Nutshell.md",
+    "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices",
     "articles/Quantum Tensor Networks in a Nutshell/tensors26.png",
     "articles/Quantum Tensor Networks in a Nutshell/tensors25.png",
     "articles/Quantum Tensor Networks in a Nutshell/tensors24.png",
@@ -195,9 +199,6 @@
     "articles/Quantum Tensor Networks in a Nutshell/tensors19.png",
     "articles/Quantum Tensor Networks in a Nutshell/tensosrs18.png",
     "articles/Quantum Tensor Networks in a Nutshell/tensors17.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors16.png",
-    "Template.md",
-    "articles/Quantum Tensor Networks in a Nutshell/Quantum Tensor Networks in a Nutshell.md",
     "articles/Quantum Tensor Networks in a Nutshell",
     "articles/Tensor Networks for Quantum Machine Learning/Tensor Networks for Quantum Machine Learning.md",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/Tensor Network Quantum Simulator With Step-Dependent Parallelization.md",
