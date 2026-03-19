@@ -16,11 +16,17 @@
 - [ ] [2017 Proceedings of the Ninteenth Workshop on Algorithm Engineering and Experiments (ALENEX)](https://epubs.siam.org/doi/10.1137/1.9781611974768.3)
 - [ ] [Recent Advances in Graph Partitioning](https://arxiv.org/abs/1311.3144)
 
-- [ ] [Community structure in social and biological networks](https://arxiv.org/abs/cond-mat/0112110)
+- [X] [Community structure in social and biological networks](https://arxiv.org/abs/cond-mat/0112110)
 - [ ] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
 
 ---
 
+### Good to cite
+
+- [ ] [Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.64.016132) (for [Community structure in social and biological networks])
+
+
+---
 
 ### Help classification and Understanding
 
