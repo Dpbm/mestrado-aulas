@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
+                "file": "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Density matrix representation of hybrid tensor networks for noisy quantum devices"
+              "title": "Hyper-optimized tensor network contraction"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 406.5
+    "width": 460.5,
+    "collapsed": true
   },
   "right": {
     "id": "3349428a8b7c5c8c",
@@ -185,20 +186,23 @@
   },
   "active": "8697588540c08088",
   "lastOpenFiles": [
-    "Template.md",
+    "articles/Hyper-optimized tensor network contraction/score2.png",
+    "articles/Hyper-optimized tensor network contraction/score.png",
+    "articles/Hyper-optimized tensor network contraction/contraction1.png",
+    "articles/Hyper-optimized tensor network contraction/complexity3.png",
+    "articles/Hyper-optimized tensor network contraction/complexity2.png",
+    "articles/Hyper-optimized tensor network contraction/complexity1.png",
+    "articles/Hyper-optimized tensor network contraction/tree2.png",
+    "articles/Hyper-optimized tensor network contraction/tree1.png",
+    "articles/Hyper-optimized tensor network contraction/ideas2.png",
+    "articles/Hyper-optimized tensor network contraction/ideas1.png",
     "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
+    "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/HTN.png",
+    "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
+    "Template.md",
+    "articles/Hyper-optimized tensor network contraction",
     "articles/Quantum Tensor Networks in a Nutshell/Quantum Tensor Networks in a Nutshell.md",
     "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors26.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors25.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors24.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors23.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors22.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors21.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors20.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors19.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensosrs18.png",
-    "articles/Quantum Tensor Networks in a Nutshell/tensors17.png",
     "articles/Quantum Tensor Networks in a Nutshell",
     "articles/Tensor Networks for Quantum Machine Learning/Tensor Networks for Quantum Machine Learning.md",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/Tensor Network Quantum Simulator With Step-Dependent Parallelization.md",
@@ -214,7 +218,6 @@
     "articles/Efficient tensor-network simulations of weakly-measured quantum circuits",
     "articles/Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale",
     "articles/Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction",
-    "Welcome.md",
-    "articles"
+    "Welcome.md"
   ]
 }

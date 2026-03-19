@@ -6,16 +6,30 @@
 
 ## Papers
 
+### Must Read
+- [ ] [Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks](https://arxiv.org/pdf/1603.03039)
+- [ ] [Faster identification of optimal contraction sequences for tensor networks](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.033315)
+- [ ] [Classical Simulation of Intermediate-Size Quantum Circuits](https://arxiv.org/abs/1805.01450)
+- [ ] [Taking the Human Out of the Loop: A Review of Bayesian Optimization](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7352306)
+- [ ] [Fast counting with tensor networks](https://scipost.org/SciPostPhys.7.5.060)
+- [ ] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
+- [ ] [2017 Proceedings of the Ninteenth Workshop on Algorithm Engineering and Experiments (ALENEX)](https://epubs.siam.org/doi/10.1137/1.9781611974768.3)
+- [ ] [Recent Advances in Graph Partitioning](https://arxiv.org/abs/1311.3144)
+
+- [ ] [Community structure in social and biological networks](https://arxiv.org/abs/cond-mat/0112110)
+- [ ] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
+
+---
+
+
 ### Help classification and Understanding
 
-- [ ] [Hyper-optimized tensor network contraction](https://arxiv.org/pdf/2002.01935)
+- [X] [Hyper-optimized tensor network contraction](https://arxiv.org/pdf/2002.01935)
 - [X] [Tensor Networks in a Nutshell](https://arxiv.org/pdf/1708.00006)
-- [ ] [Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks](https://arxiv.org/pdf/1603.03039)
-- [ ] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
+- [x] [Tensor networks for quantum machine learning](https://arxiv.org/abs/2303.11735)
 - [ ] [Lectures on Quantum Tensor Networks](https://arxiv.org/abs/1912.10049)
 - [ ] [A Practical Introduction to Tensor Networks: Matrix Product States and Projected Entangled Pair States](https://arxiv.org/abs/1306.2164)
 - [ ] [Tensor networks for quantum computing](https://www.nature.com/articles/s42254-025-00853-1)
-- [x] [Tensor networks for quantum machine learning](https://arxiv.org/abs/2303.11735)
 - [ ] [The density-matrix renormalization group in the age of matrix product states](https://arxiv.org/abs/1008.3477)
 - [ ] [Matrix Product States and Projected Entangled Pair States: Concepts, Symmetries, and Theorems](https://arxiv.org/abs/2011.12127)
 - [ ] [The density-matrix renormalization group](https://arxiv.org/abs/cond-mat/0409292)
@@ -23,17 +37,19 @@
 
 ### Simulation
 
+- [X] [Density matrix representation of hybrid tensor networks for noisy quantum devices](https://quantum-journal.org/papers/q-2025-08-07-1823/)
 - [ ] [Simulating quantum circuits with tree tensor networks using density-matrix renormalization group algorithm](https://journals.aps.org/prb/abstract/10.1103/64hd-q4z5)
 - [ ] [Optimal tree tensor network operators for tensor network simulations: Applications to open quantum systems](https://pubs.aip.org/aip/jcp/article-abstract/161/5/054116/3306704/Optimal-tree-tensor-network-operators-for-tensor?redirectedFrom=fulltext)
 - [ ] [Quantum Simulators and Applications on Quantum Framework](https://ieeexplore.ieee.org/abstract/document/11249990)
 - [ ] [Approximate simulation of complex quantum circuits using sparse tensors](https://arxiv.org/abs/2602.04011)
-- [ ] [Density matrix representation of hybrid tensor networks for noisy quantum devices](https://quantum-journal.org/papers/q-2025-08-07-1823/)
 - [ ] [Quantum computing simulation acceleration and error mitigation method and system based on tensor network topology optimization](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/14133/1413303/Quantum-computing-simulation-acceleration-and-error-mitigation-method-and-system/10.1117/12.3108481.short)
 - [ ] [Validating quantum-classical programming models with tensor network simulations](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0206704)
 - [ ] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
 
 ### Frameworks
 
+- [X] [Jet: Fast quantum circuit simulations with parallel task-based tensor-network contraction](https://quantum-journal.org/papers/q-2022-05-09-709/)
+- [X] [Tensor Network Quantum Virtual Machine for Simulating Quantum Circuits at Exascale](https://dl.acm.org/doi/full/10.1145/3547334)
 - [ ] [QuTree: A tree tensor network package](https://pubs.aip.org/aip/jcp/article-abstract/160/11/112501/3275717/QuTree-A-tree-tensor-network-package?redirectedFrom=fulltext)
 - [ ] [pyTTN: An open-source toolbox for open and closed system quantum dynamics simulations using tree tensor networks](https://pubs.aip.org/aip/jcp/article-abstract/163/20/202501/3373189/pyTTN-An-open-source-toolbox-for-open-and-closed?redirectedFrom=fulltext)
 - [ ] [Implementation of Tensor Network Simulation TN-Sim under NWQ-Sim](https://ieeexplore.ieee.org/abstract/document/11196314)
@@ -42,26 +58,24 @@
 - [ ] [METIS](https://docs.icer.msu.edu/available_software/detail/METIS/)
 - [ ] [cotengra](https://github.com/jcmgray/cotengra)
 - [ ] [The ITensor Software Library for Tensor Network Calculations](https://arxiv.org/abs/2007.14822)
-- [X] [Jet: Fast quantum circuit simulations with parallel task-based tensor-network contraction](https://quantum-journal.org/papers/q-2022-05-09-709/)
-- [X] [Tensor Network Quantum Virtual Machine for Simulating Quantum Circuits at Exascale](https://dl.acm.org/doi/full/10.1145/3547334)
+
 
 ### TN Algorithms
 
-- [ ] [Constructing Optimal Contraction Trees for Tensor Network Quantum Circuit Simulation](https://ieeexplore.ieee.org/abstract/document/9926353)
-- [ ] [Tensor Network Techniques for Quantum Computation](https://library.oapen.org/handle/20.500.12657/96026)
 - [X] [Quantum-Classical Computing via Tensor Networks](https://arxiv.org/abs/2410.15080)
 - [X] [Efficient tensor-network simulations of weakly-measured quantum circuits](https://arxiv.org/abs/2510.07211)
+- [X] [Tensor Network Quantum Simulator With Step-Dependent Parallelization](https://arxiv.org/abs/2012.02430)
+- [X] [Algorithms for Tensor Network Contraction Ordering](https://arxiv.org/abs/2001.08063)
+- [ ] [Constructing Optimal Contraction Trees for Tensor Network Quantum Circuit Simulation](https://ieeexplore.ieee.org/abstract/document/9926353)
+- [ ] [Tensor Network Techniques for Quantum Computation](https://library.oapen.org/handle/20.500.12657/96026)
 - [ ] [An efficient tensor transpose algorithm for multicore CPU, Intel Xeon Phi, and NVidia Tesla GPU](https://www.sciencedirect.com/science/article/abs/pii/S0010465514004330?via%3Dihub)
 - [ ] [On the Optimal Linear Contraction Order of Tree Tensor Networks, and Beyond](https://epubs.siam.org/doi/abs/10.1137/23M161286X)
-- [X] [Tensor Network Quantum Simulator With Step-Dependent Parallelization](https://arxiv.org/abs/2012.02430)
 - [ ] [Random insights into the complexity of two-dimensional tensor network calculations](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.109.235102)
-- [X] [Algorithms for Tensor Network Contraction Ordering](https://arxiv.org/abs/2001.08063)
 - [ ] [Tensor networks for complex quantum systems](https://www.nature.com/articles/s42254-019-0086-7)
 - [ ] [High-Quality Hypergraph Partitioning](https://dl.acm.org/doi/10.1145/3529090)
 - [ ] [Efficient tree tensor network states (TTNS) for quantum chemistry: Generalizations of the density matrix renormalization group algorithm](https://pubs.aip.org/aip/jcp/article-abstract/138/13/134113/72146/Efficient-tree-tensor-network-states-TTNS-for?redirectedFrom=fulltext)
 - [ ] [Towards a polynomial algorithm for optimal contraction sequence of tensor networks from trees](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.100.043309)
 - [ ] [Tensor Network Renormalization](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.180405)
-
 - [ ] [Bucket Elimination: A Unifying Framework for Several Probabilistic Inference](https://arxiv.org/abs/1302.3572)
 - [ ] [A Complete Anytime Algorithm for Treewidth](https://arxiv.org/abs/1207.4109)
 - [ ] [Positive-Instance Driven Dynamic Programming for Treewidth](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESA.2017.68)
