@@ -7,17 +7,16 @@
 ## Papers
 
 ### Must Read
-- [ ] [Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks](https://arxiv.org/pdf/1603.03039)
 - [ ] [Faster identification of optimal contraction sequences for tensor networks](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.033315)
 - [ ] [Classical Simulation of Intermediate-Size Quantum Circuits](https://arxiv.org/abs/1805.01450)
-- [ ] [Taking the Human Out of the Loop: A Review of Bayesian Optimization](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7352306)
 - [ ] [Fast counting with tensor networks](https://scipost.org/SciPostPhys.7.5.060)
 - [ ] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
 - [ ] [2017 Proceedings of the Ninteenth Workshop on Algorithm Engineering and Experiments (ALENEX)](https://epubs.siam.org/doi/10.1137/1.9781611974768.3)
 - [ ] [Recent Advances in Graph Partitioning](https://arxiv.org/abs/1311.3144)
-
+- [X] [Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks](https://arxiv.org/pdf/1603.03039)
+- [X] [Taking the Human Out of the Loop: A Review of Bayesian Optimization](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7352306)
 - [X] [Community structure in social and biological networks](https://arxiv.org/abs/cond-mat/0112110)
-- [ ] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
+- [X] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
 
 ---
 
