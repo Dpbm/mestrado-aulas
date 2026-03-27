@@ -1,0 +1,4 @@
+- Ortoghonal means to have 90 degrees between two vectors
+- the dot product of x^t y = y^t x
+- subspaces are Ortoghonal to each other if every vector in them are also Ortoghonal to the another subspace
+- the row space of a matrix is Ortoghonal to the nullspace

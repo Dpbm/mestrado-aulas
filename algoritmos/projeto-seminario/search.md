@@ -8,22 +8,24 @@
 
 ### Must Read
 - [ ] [Faster identification of optimal contraction sequences for tensor networks](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.033315)
-- [ ] [Classical Simulation of Intermediate-Size Quantum Circuits](https://arxiv.org/abs/1805.01450)
+- [X] [Classical Simulation of Intermediate-Size Quantum Circuits](https://arxiv.org/abs/1805.01450)
 - [ ] [Fast counting with tensor networks](https://scipost.org/SciPostPhys.7.5.060)
-- [ ] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
+- [X] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
 - [ ] [2017 Proceedings of the Ninteenth Workshop on Algorithm Engineering and Experiments (ALENEX)](https://epubs.siam.org/doi/10.1137/1.9781611974768.3)
-- [ ] [Recent Advances in Graph Partitioning](https://arxiv.org/abs/1311.3144)
+- [X] [Recent Advances in Graph Partitioning](https://arxiv.org/abs/1311.3144)
 - [X] [Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks](https://arxiv.org/pdf/1603.03039)
 - [X] [Taking the Human Out of the Loop: A Review of Bayesian Optimization](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7352306)
 - [X] [Community structure in social and biological networks](https://arxiv.org/abs/cond-mat/0112110)
 - [X] [Simulating quantum circuits using tree tensor networks](https://quantum-journal.org/papers/q-2023-03-30-964/pdf/)
+- [X] [Orthogonal Vectors and Subspaces](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/orthogonal-vectors-and-subspaces/)
+- [X] [Singular Value Decomposition](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/mit18_06scf11_ses3-5sum/)
+- [X] [Orthogonal Matrices and Gram-Schmidt](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/orthogonal-matrices-and-gram-schmidt/)
 
 ---
 
 ### Good to cite
 
 - [ ] [Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.64.016132) (for [Community structure in social and biological networks])
-
 
 ---
 
@@ -46,7 +48,7 @@
 - [ ] [Simulating quantum circuits with tree tensor networks using density-matrix renormalization group algorithm](https://journals.aps.org/prb/abstract/10.1103/64hd-q4z5)
 - [ ] [Optimal tree tensor network operators for tensor network simulations: Applications to open quantum systems](https://pubs.aip.org/aip/jcp/article-abstract/161/5/054116/3306704/Optimal-tree-tensor-network-operators-for-tensor?redirectedFrom=fulltext)
 - [ ] [Quantum Simulators and Applications on Quantum Framework](https://ieeexplore.ieee.org/abstract/document/11249990)
-- [ ] [Approximate simulation of complex quantum circuits using sparse tensors](https://arxiv.org/abs/2602.04011)
+- [X] [Approximate simulation of complex quantum circuits using sparse tensors](https://arxiv.org/abs/2602.04011)
 - [ ] [Quantum computing simulation acceleration and error mitigation method and system based on tensor network topology optimization](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/14133/1413303/Quantum-computing-simulation-acceleration-and-error-mitigation-method-and-system/10.1117/12.3108481.short)
 - [ ] [Validating quantum-classical programming models with tensor network simulations](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0206704)
 - [ ] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)

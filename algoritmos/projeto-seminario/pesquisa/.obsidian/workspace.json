@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
+                "file": "articles/Approximate simulation of complex quantum circuits using sparse tensors/Approximate simulation of complex quantum circuits using sparse tensors.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hyper-optimized tensor network contraction"
+              "title": "Approximate simulation of complex quantum circuits using sparse tensors"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 460.5,
-    "collapsed": true
+    "width": 460.5
   },
   "right": {
     "id": "3349428a8b7c5c8c",
@@ -184,22 +183,24 @@
       "bases:Create new base": false
     }
   },
-  "active": "8697588540c08088",
+  "active": "6558a340613a95a5",
   "lastOpenFiles": [
-    "articles/Hyper-optimized tensor network contraction/score2.png",
-    "articles/Hyper-optimized tensor network contraction/score.png",
-    "articles/Hyper-optimized tensor network contraction/contraction1.png",
-    "articles/Hyper-optimized tensor network contraction/complexity3.png",
-    "articles/Hyper-optimized tensor network contraction/complexity2.png",
-    "articles/Hyper-optimized tensor network contraction/complexity1.png",
-    "articles/Hyper-optimized tensor network contraction/tree2.png",
-    "articles/Hyper-optimized tensor network contraction/tree1.png",
-    "articles/Hyper-optimized tensor network contraction/ideas2.png",
-    "articles/Hyper-optimized tensor network contraction/ideas1.png",
-    "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
-    "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/HTN.png",
-    "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
+    "articles/Fast counting with tensor networks/Fast counting with tensor networks.md",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/6.png",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/5.png",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/4.png",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/3.png",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/2.png",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/1 copy.png",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/1.png",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/Classical Simulation of Intermediate-Size Quantum Circuits.md",
+    "articles/Approximate simulation of complex quantum circuits using sparse tensors/4.png",
+    "articles/Approximate simulation of complex quantum circuits using sparse tensors/3.png",
+    "articles/Approximate simulation of complex quantum circuits using sparse tensors/2.png",
     "Template.md",
+    "articles/Approximate simulation of complex quantum circuits using sparse tensors/Approximate simulation of complex quantum circuits using sparse tensors.md",
+    "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
+    "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
     "articles/Hyper-optimized tensor network contraction",
     "articles/Quantum Tensor Networks in a Nutshell/Quantum Tensor Networks in a Nutshell.md",
     "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices",

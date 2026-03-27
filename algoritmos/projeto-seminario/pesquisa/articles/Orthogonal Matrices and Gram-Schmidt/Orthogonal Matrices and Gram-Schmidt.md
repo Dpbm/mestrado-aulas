@@ -1,0 +1,4 @@
+- vectors are orthonormal when x_i^t x_j = 0 if i != j else 1 when i=j 
+- if each column of a matrix Q is orthonormal it's called an orthonormal matrix Q which Q^t Q = I
+- a square orthonormal matrix is called orthogonal matrix -> Q^t Q = I so Q^t = Q^-1
+- Gram-Schimdt -> a way to make a matrix orthonormal
