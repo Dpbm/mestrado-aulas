@@ -9,7 +9,7 @@
 ### Must Read
 - [ ] [Faster identification of optimal contraction sequences for tensor networks](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.033315)
 - [X] [Classical Simulation of Intermediate-Size Quantum Circuits](https://arxiv.org/abs/1805.01450)
-- [ ] [Fast counting with tensor networks](https://scipost.org/SciPostPhys.7.5.060)
+- [X] [Fast counting with tensor networks](https://scipost.org/SciPostPhys.7.5.060)
 - [X] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
 - [ ] [2017 Proceedings of the Ninteenth Workshop on Algorithm Engineering and Experiments (ALENEX)](https://epubs.siam.org/doi/10.1137/1.9781611974768.3)
 - [X] [Recent Advances in Graph Partitioning](https://arxiv.org/abs/1311.3144)
@@ -51,7 +51,7 @@
 - [X] [Approximate simulation of complex quantum circuits using sparse tensors](https://arxiv.org/abs/2602.04011)
 - [ ] [Quantum computing simulation acceleration and error mitigation method and system based on tensor network topology optimization](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/14133/1413303/Quantum-computing-simulation-acceleration-and-error-mitigation-method-and-system/10.1117/12.3108481.short)
 - [ ] [Validating quantum-classical programming models with tensor network simulations](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0206704)
-- [ ] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
+- [X] [Simulating quantum computation by contracting tensor networks](https://arxiv.org/abs/quant-ph/0511069)
 
 ### Frameworks
 
@@ -60,9 +60,9 @@
 - [ ] [QuTree: A tree tensor network package](https://pubs.aip.org/aip/jcp/article-abstract/160/11/112501/3275717/QuTree-A-tree-tensor-network-package?redirectedFrom=fulltext)
 - [ ] [pyTTN: An open-source toolbox for open and closed system quantum dynamics simulations using tree tensor networks](https://pubs.aip.org/aip/jcp/article-abstract/163/20/202501/3373189/pyTTN-An-open-source-toolbox-for-open-and-closed?redirectedFrom=fulltext)
 - [ ] [Implementation of Tensor Network Simulation TN-Sim under NWQ-Sim](https://ieeexplore.ieee.org/abstract/document/11196314)
-- [ ] [ExaTN: Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale](https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2022.838601/full#s2)
+- [X] [ExaTN: Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale](https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2022.838601/full#s2)
 - [ ] [A PEPS Plugin for TNQVM](https://ieeexplore.ieee.org/abstract/document/10313902)
-- [ ] [METIS](https://docs.icer.msu.edu/available_software/detail/METIS/)
+- [ ] [METIS: A Software Package for Partitioning Unstructured Graphs, Partitioning Meshes, and Computing Fill-Reducing Orderings of Sparse Matrices](https://conservancy.umn.edu/items/2f610239-590c-45c0-bcd6-321036aaad56)
 - [ ] [cotengra](https://github.com/jcmgray/cotengra)
 - [ ] [The ITensor Software Library for Tensor Network Calculations](https://arxiv.org/abs/2007.14822)
 
