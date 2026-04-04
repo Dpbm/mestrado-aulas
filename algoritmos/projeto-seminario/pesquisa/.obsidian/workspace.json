@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/The ITensor Software Library for Tensor Network Calculations/The ITensor Software Library for Tensor Network Calculations.md",
+                "file": "articles/Algorithms for Tensor Network Contraction Ordering/Algorithms for Tensor Network Contraction Ordering.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "The ITensor Software Library for Tensor Network Calculations"
+              "title": "Algorithms for Tensor Network Contraction Ordering"
             }
           }
         ]
@@ -185,9 +185,16 @@
   },
   "active": "da0504e99c57c019",
   "lastOpenFiles": [
-    "articles/The ITensor Software Library for Tensor Network Calculations/tn.png",
+    "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States.md",
     "Template.md",
     "articles/The ITensor Software Library for Tensor Network Calculations/The ITensor Software Library for Tensor Network Calculations.md",
+    "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States",
+    "articles/The ITensor Software Library for Tensor Network Calculations/5.png",
+    "articles/The ITensor Software Library for Tensor Network Calculations/4.png",
+    "articles/The ITensor Software Library for Tensor Network Calculations/3.png",
+    "articles/The ITensor Software Library for Tensor Network Calculations/2.png",
+    "articles/The ITensor Software Library for Tensor Network Calculations/1.png",
+    "articles/The ITensor Software Library for Tensor Network Calculations/tn.png",
     "articles/ExaTN Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale/ExaTN Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale.md",
     "articles/The ITensor Software Library for Tensor Network Calculations",
     "articles/Orthogonal Matrices and Gram-Schmidt/Orthogonal Matrices and Gram-Schmidt.md",
@@ -199,13 +206,7 @@
     "articles/Classical Simulation of Intermediate-Size Quantum Circuits/5.png",
     "articles/Classical Simulation of Intermediate-Size Quantum Circuits/4.png",
     "articles/Classical Simulation of Intermediate-Size Quantum Circuits/3.png",
-    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/2.png",
-    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/1 copy.png",
-    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/1.png",
     "articles/Classical Simulation of Intermediate-Size Quantum Circuits/Classical Simulation of Intermediate-Size Quantum Circuits.md",
-    "articles/Approximate simulation of complex quantum circuits using sparse tensors/4.png",
-    "articles/Approximate simulation of complex quantum circuits using sparse tensors/3.png",
-    "articles/Approximate simulation of complex quantum circuits using sparse tensors/2.png",
     "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
     "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
     "articles/Hyper-optimized tensor network contraction",
@@ -223,7 +224,6 @@
     "articles/Quantum-Classical Computing via Tensor Networks",
     "articles/Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/Jet - Fast quantum circuit simulations with parallel task-based tensor-network contraction.md",
     "articles/Efficient tensor-network simulations of weakly-measured quantum circuits",
-    "articles/Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale",
     "Welcome.md"
   ]
 }
