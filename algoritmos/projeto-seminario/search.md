@@ -21,6 +21,7 @@
 - [X] [Singular Value Decomposition](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/mit18_06scf11_ses3-5sum/)
 - [X] [Orthogonal Matrices and Gram-Schmidt](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/orthogonal-matrices-and-gram-schmidt/)
 - [ ] [cutensornet reference](https://docs.nvidia.com/cuda/cuquantum/23.06.0/cutensornet/overview.html)
+- [ ] [Deep Multilevel Graph Partitioning](https://arxiv.org/abs/2105.02022)
 
 ---
 
@@ -64,7 +65,7 @@
 - [ ] [Implementation of Tensor Network Simulation TN-Sim under NWQ-Sim](https://ieeexplore.ieee.org/abstract/document/11196314)
 - [X] [ExaTN: Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale](https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2022.838601/full#s2)
 - [ ] [A PEPS Plugin for TNQVM](https://ieeexplore.ieee.org/abstract/document/10313902)
-- [ ] [METIS: A Software Package for Partitioning Unstructured Graphs, Partitioning Meshes, and Computing Fill-Reducing Orderings of Sparse Matrices](https://conservancy.umn.edu/items/2f610239-590c-45c0-bcd6-321036aaad56)
+- [X] [METIS: A Software Package for Partitioning Unstructured Graphs, Partitioning Meshes, and Computing Fill-Reducing Orderings of Sparse Matrices](https://conservancy.umn.edu/items/2f610239-590c-45c0-bcd6-321036aaad56)
 - [ ] [cotengra](https://github.com/jcmgray/cotengra)
 - [X] [The ITensor Software Library for Tensor Network Calculations](https://arxiv.org/abs/2007.14822)
 
