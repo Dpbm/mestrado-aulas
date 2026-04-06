@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/Deep Multilevel Graph Partitioning/Deep Multilevel Graph Partitioning.md",
+                "file": "articles/cutensornet reference.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Deep Multilevel Graph Partitioning"
+              "title": "cutensornet reference"
             }
           }
         ]
@@ -186,6 +186,7 @@
   "active": "6987ec7394899ceb",
   "lastOpenFiles": [
     "Template.md",
+    "articles/cutensornet reference.md",
     "articles/Deep Multilevel Graph Partitioning/Deep Multilevel Graph Partitioning.md",
     "articles/METIS/METIS.md",
     "articles/Deep Multilevel Graph Partitioning",
@@ -219,7 +220,6 @@
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/4.png",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/3.png",
     "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States.md",
-    "articles/The ITensor Software Library for Tensor Network Calculations/The ITensor Software Library for Tensor Network Calculations.md",
     "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States",
     "articles/The ITensor Software Library for Tensor Network Calculations/5.png",
     "articles/The ITensor Software Library for Tensor Network Calculations/4.png",
