@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "30c58a3432e7e526",
+        "id": "ea6d026e77516792",
         "type": "tabs",
         "children": [
           {
-            "id": "27ee2868789c85eb",
+            "id": "6987ec7394899ceb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/METIS/METIS.md",
+                "file": "articles/Deep Multilevel Graph Partitioning/Deep Multilevel Graph Partitioning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "METIS"
+              "title": "Deep Multilevel Graph Partitioning"
             }
           }
         ]
@@ -183,11 +183,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "27ee2868789c85eb",
+  "active": "6987ec7394899ceb",
   "lastOpenFiles": [
-    "articles/METIS/storage.png",
     "Template.md",
+    "articles/Deep Multilevel Graph Partitioning/Deep Multilevel Graph Partitioning.md",
     "articles/METIS/METIS.md",
+    "articles/Deep Multilevel Graph Partitioning",
+    "articles/METIS/storage.png",
     "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
     "articles/METIS",
     "articles/Simulating quantum computation by contracting tensor networks/1.png",
@@ -222,14 +224,12 @@
     "articles/The ITensor Software Library for Tensor Network Calculations/5.png",
     "articles/The ITensor Software Library for Tensor Network Calculations/4.png",
     "articles/The ITensor Software Library for Tensor Network Calculations/3.png",
-    "articles/The ITensor Software Library for Tensor Network Calculations/2.png",
     "articles/The ITensor Software Library for Tensor Network Calculations",
     "articles/Hyper-optimized tensor network contraction",
     "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices",
     "articles/Quantum Tensor Networks in a Nutshell",
     "articles/Tensor Networks for Quantum Machine Learning",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization",
-    "articles/Algorithms for Tensor Network Contraction Ordering",
-    "articles/Quantum-Classical Computing via Tensor Networks"
+    "articles/Algorithms for Tensor Network Contraction Ordering"
   ]
 }

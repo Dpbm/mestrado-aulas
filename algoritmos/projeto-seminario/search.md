@@ -21,7 +21,7 @@
 - [X] [Singular Value Decomposition](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/resources/mit18_06scf11_ses3-5sum/)
 - [X] [Orthogonal Matrices and Gram-Schmidt](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/orthogonal-matrices-and-gram-schmidt/)
 - [ ] [cutensornet reference](https://docs.nvidia.com/cuda/cuquantum/23.06.0/cutensornet/overview.html)
-- [ ] [Deep Multilevel Graph Partitioning](https://arxiv.org/abs/2105.02022)
+- [X] [Deep Multilevel Graph Partitioning](https://arxiv.org/abs/2105.02022)
 
 ---
 
