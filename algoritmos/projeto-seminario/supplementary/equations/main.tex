@@ -1,11 +1,13 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \title{equation-contraction-tensors}
 \author{Alexandre Silva}
 \date{April 2026}
-
+\pagenumbering{gobble}
 \begin{document}
 
 \maketitle
@@ -49,5 +51,115 @@ $$Q = \frac{1}{\sqrt{2}}
 \end{bmatrix}
 \]
 $$
+\newpage
+\begin{algorithm}
+\caption{Hyper-Par}
+\begin{algorithmic}
+
+\State $B \gets \infty$ \Comment{Melhor custo}
+\State $BG \gets \{\}$ \Comment{Melhor árvore}
+\Statex
+
+\Function{Cost}{Node}
+    \If {Node is leaf}
+        \State \Return $0$
+    \EndIf
+    \Statex
+
+    \State $c \gets 2^{nindexes}$
+    \State $\text{total} \gets c$
+    \Statex
+
+    \For{child in node.children}
+        \State $\text{total} \gets \text{Cost(child)}$
+    \EndFor
+    \Statex
+
+    \State \Return total
+\EndFunction
+\Statex
+
+\Function{Opt}{$V$}
+    \State $\text{out\_nodes} \gets \{\}$
+    \State $\text{nodes} \gets \text{every item in $V$ as Leaf}$
+
+    \While{ $len(nodes) > 1$}
+
+        \State $\text{pairs} \gets \{\}$
+        \State $\text{costs} \gets \{\}$
+        \Statex
+        
+        \For{each pair (i, j) in nodes}
+            \State $\text{cost} \gets \text{size($\text{node}_i$)} - \alpha (\text{size($\text{node}_i$)} + \text{size($\text{node}_j$)})$
+
+            \State pairs.append((i, j))
+            \State costs.append(cost)
+        \EndFor
+        \Statex
+        
+        \State $\text{probs} \gets \{\}$
+        \State $\text{Z} \gets 0$
+        \For{cost in costs}
+            \State $p \gets \exp{(-cost / \tau)}$
+            \State probs.append(p)
+            \State $Z \gets Z + p$
+        \EndFor
+        \Statex
+
+        
+        \For{ $k$ in range(len(probs))}
+            \State $probs_k \gets \frac{probs_k}{Z} $
+        \EndFor
+
+        \State $\text{i, j} \gets \text{random\_choice(pairs, probs)}$
+        
+        \State $\text{new\_node} \gets \text{Node($\text{nodes}_i$, $\text{nodes}_j$)}$
+
+        \State $\text{remove nodes}_i\text{, nodes}_j\text{ from nodes}$
+        \State out\_nodes.append(new\_node)
+    \EndWhile
+
+    \State \Return out\_nodes
+\EndFunction
+\Statex
+
+\Function{Partition}{$V$,cut,$\epsilon$,$k$}
+    \If{$|V| \le 1$}
+        \State \Return Leaf($V$)
+    \EndIf
+
+    \If{$|V| \le \text{cut}$}
+        \State \Return Opt($V$)
+    \EndIf
+    \Statex
+
+    \State $\text{parts} \gets \text{KaHyPar($V$, $\epsilon$, $k$)}$   
+    \State $\text{children} \gets \{\}$
+    \Statex
+
+    \For{each $V_i$ in parts}
+        \State children.append(Partition($V_i$, cut, $\epsilon$, $k$))
+    \EndFor
+    
+    \State \Return Node($V$, children)
+\EndFunction
+\Statex
+
+\For{ $\text{n combs. de } k, \epsilon,\text{cut}$ }
+
+\State $V \gets \text{Partition(${G}$)}$
+
+\State $\text{cost} \gets \text{Cost($V$)}$
+\If{$\text{cost} \lt B$}
+    \State $B \gets \text{cost}$
+    \State $BG \gets V$
+\EndIf
+
+\EndFor
+
+
+\end{algorithmic}
+\end{algorithm}
+
 
 \end{document}
