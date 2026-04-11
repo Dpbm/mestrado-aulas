@@ -16,8 +16,7 @@
 
 ----
 
-
-- Coarsening
+# Coarsening
 
   1. at the beginning of each pass a permutation of the vertex set is created 
   2. for each vertex u find a partner v with the highest rating and contract them
@@ -34,8 +33,16 @@
 ----
 
 
-- Partitioning
+# Partitioning
+
   - RB algorithm
+    - if k is a power of 2.
+      - you compute a bipartition and then recurse on each block
+      - takes log k of these
+    - Otherwise
+      - partition is done first with two then block a is floor(k/2) and b 
+        ceil(k/2)
+      - always keeping track of imbalances
 
   - refined via 2-way localized local search
     - two priority queues (PQs) 
@@ -57,6 +64,9 @@
 
 - Refinement
   - k-way local search algorithm
+    - it doesnt compute the gains for all blocks 
+    - only maintains feasibility
+
   - flow-based refinement algorithm  (FlowCutter) (some times -> 7)
 
 
