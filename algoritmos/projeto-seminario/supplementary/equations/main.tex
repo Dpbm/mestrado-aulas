@@ -3,6 +3,9 @@
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \title{equation-contraction-tensors}
 \author{Alexandre Silva}
@@ -176,6 +179,54 @@ $$
 \EndWhile
 
 \end{algorithmic}
+\end{algorithm}
+
+
+\newpage
+\begin{algorithm}[H]
+\SetKwFunction{FExpand}{expandBFS}
+\SetKwFunction{FContract}{contract}
+\SetKwFunction{FWeight}{weight}
+\SetKwFunction{FLimit}{calculateLimit}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{Hypergraph $H = (V, E)$, Current Partition $(V_0, V_1)$, Capacity parameter $\alpha$}
+\Output{Sub-hypergraph $H'$ for FlowCutter with source $s$ and target $t$}
+
+\BlankLine
+\tcp{1. Identify initial border vertices}
+$B_0 \leftarrow \{v \in V_0 \mid \exists e \in E : v \in e \land e \cap V_1 \neq \emptyset\}$\;
+$B_1 \leftarrow \{v \in V_1 \mid \exists e \in E : v \in e \land e \cap V_0 \neq \emptyset\}$\;
+
+\BlankLine
+\tcp{2. Expand to find the Movable Set $M$}
+$L_0 \leftarrow \FLimit(\alpha, V_0)$ \tcp*{Weight limit for block 0 expansion}
+$L_1 \leftarrow \FLimit(\alpha, V_1)$ \tcp*{Weight limit for block 1 expansion}
+
+$M_0 \leftarrow \FExpand(B_0, V_0, L_0)$\;
+$M_1 \leftarrow \FExpand(B_1, V_1, L_1)$\;
+$M \leftarrow M_0 \cup M_1$\;
+
+\BlankLine
+\tcp{3. Contract stable vertices into source and target}
+$s \leftarrow \FContract(V_0 \setminus M)$\;
+$t \leftarrow \FContract(V_1 \setminus M)$\;
+$V_{active} \leftarrow M \cup \{s, t\}$\;
+
+\BlankLine
+\tcp{4. Filter hyperedges for the flow network}
+$E' \leftarrow \emptyset$\;
+\ForEach{$e \in E$}{
+    $e' \leftarrow e \cap V_{active}$\;
+    \If{$|e'| \ge 2$ \textbf{and} $e$ is not connected to other blocks}{
+        $E' \leftarrow E' \cup \{e'\}$\;
+    }
+}
+
+\Return $H' = (V_{active}, E')$ with terminals $(s, t)$\;
+
+\caption{FlowCutter Setup: Identifying the Refinement Corridor}
+\label{alg:flowcutter_setup}
 \end{algorithm}
 
 \end{document}

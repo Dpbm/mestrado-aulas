@@ -28,6 +28,7 @@
 ### Good to cite
 
 - [ ] [Scientific collaboration networks. II. Shortest paths, weighted networks, and centrality](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.64.016132) (for [Community structure in social and biological networks])
+- [X] [Fast unfolding of communities in large networks](https://arxiv.org/abs/0803.0476) (for kahypar)
 
 ---
 

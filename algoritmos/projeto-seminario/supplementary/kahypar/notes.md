@@ -12,7 +12,18 @@
       4. each cluster is contracted into a single vertex
 
   - community detection (Louvain algorithm)
+    > phase 1
+    1. assign a different community for each node in he network
+    2. for each node i, consider the neighbors and calculate the gain of modularity it would
+        give by moving i from community i to j 
+    3. move i to the community where the gain is max and positive
+    4. repeat until not further improvement is reachable
 
+    > phase 2
+    5. construct the graph
+      6. the link between nodes are the sum of the internal group weights
+
+    repeat phases
 
 ----
 
@@ -62,12 +73,26 @@
 
 ------
 
-- Refinement
+#  Refinement
+
   - k-way local search algorithm
     - it doesnt compute the gains for all blocks 
     - only maintains feasibility
 
   - flow-based refinement algorithm  (FlowCutter) (some times -> 7)
+    1. given partitions V_0 and V_1, decide which vertices can be moved M.
+      2. BFS for each V, starting with border indexes
+        3. each visited node is added to M
+        4. run until a weight constraint is broken
+    5. s=diff(V_0, M), t=diff(V_1, M)
+    6. compute the maximum flow (giving the source-side and target-side minimum cut)
+      7. rebalance if necessary
+        8. move incident vertices from the larger side to the smaller one
+        9. augment the flow (uses the same procedure to find the max flow)
 
-
+      max flow procedure:
+        - 2 alternating phases
+        - repeat until it can be augmented
+        - runs a BFS to find the distances between levels of neighbors 
+        - runs DFS to find the shortest edge-disjoint augmenting paths
 
