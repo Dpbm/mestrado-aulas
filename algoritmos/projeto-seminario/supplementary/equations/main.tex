@@ -3,8 +3,6 @@
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-\usepackage{amsmath}
 \usepackage{amssymb}
 
 \title{equation-contraction-tensors}
@@ -54,6 +52,8 @@ $$Q = \frac{1}{\sqrt{2}}
 \end{bmatrix}
 \]
 $$
+
+
 \newpage
 \begin{algorithm}
 \caption{Hyper-Par}
@@ -69,12 +69,12 @@ $$
     \EndIf
     \Statex
 
-    \State $c \gets 2^{nindexes}$
+    \State $c \gets 2^{indexes}$
     \State $\text{total} \gets c$
     \Statex
 
     \For{child in node.children}
-        \State $\text{total} \gets \text{Cost(child)}$
+        \State $\text{total} \gets \text{total} + \text{Cost(child)}$
     \EndFor
     \Statex
 
@@ -83,7 +83,7 @@ $$
 \Statex
 
 \Function{Opt}{$V$}
-    \State $\text{out\_nodes} \gets \{\}$
+    \State $\text{outNodes} \gets \{\}$
     \State $\text{nodes} \gets \text{every item in $V$ as Leaf}$
 
     \While{ $len(nodes) > 1$}
@@ -111,21 +111,26 @@ $$
 
         
         \For{ $k$ in range(len(probs))}
-            \State $probs_k \gets \frac{probs_k}{Z} $
+            \State $probs_k \gets probs_k / Z $
         \EndFor
 
-        \State $\text{i, j} \gets \text{random\_choice(pairs, probs)}$
+        \State $\text{i, j} \gets \text{randomChoice(pairs, probs)}$
         
-        \State $\text{new\_node} \gets \text{Node($\text{nodes}_i$, $\text{nodes}_j$)}$
+        \State $\text{newNode} \gets \text{Node($\text{nodes}_i$, $\text{nodes}_j$)}$
 
         \State $\text{remove nodes}_i\text{, nodes}_j\text{ from nodes}$
-        \State out\_nodes.append(new\_node)
+        \State outNodes.append(newNode)
     \EndWhile
 
-    \State \Return out\_nodes
+    \State \Return outNodes
 \EndFunction
-\Statex
+\end{algorithmic}
+\end{algorithm}
 
+\newpage
+\begin{algorithm}
+\caption{Hyper-par-part}
+\begin{algorithmic}
 \Function{Partition}{$V$,cut,$\epsilon$,$k$}
     \If{$|V| \le 1$}
         \State \Return Leaf($V$)
@@ -148,9 +153,9 @@ $$
 \EndFunction
 \Statex
 
-\For{ $\text{n combs. de } k, \epsilon,\text{cut}$ }
+\For{ $\text{each combination } (k, \epsilon,\text{cut})$ }
 
-\State $V \gets \text{Partition(${G}$)}$
+\State $V \gets \text{Partition(${G, cut, \epsilon, k}$)}$
 
 \State $\text{cost} \gets \text{Cost($V$)}$
 \If{$\text{cost} \lt B$}
@@ -169,7 +174,7 @@ $$
 \caption{Opt}
 \begin{algorithmic}
 
-\While{Há simplifcações}
+\While{there are simplifications}
     \For{node in graph}
         \State $Simplify_1(node)$
         \State $Simplify_2(node)$
@@ -181,52 +186,308 @@ $$
 \end{algorithmic}
 \end{algorithm}
 
+\newpage
+
+\begin{algorithm}
+\caption{Community}
+\begin{algorithmic}
+
+\State Communities $\gets$ Each node is a community  
+
+\For{m in range(passes)}
+    \State can\_improve $\gets$ TRUE
+    \While{can\_improve}
+        \State can\_improve $\gets$ FALSE
+        \For{node in nodes}
+            \State BestGain $\gets \infty$
+            \State BestCommunity $\gets null$
+            \Statex
+                
+            \For{neighbor in node.neighbors}
+                \State community $\gets \text{communities}_\text{neighbor}$
+                \State gain $\gets$ modularity\_gain(node, community, G)
+                \If{gain $ > $ BestGain}
+                    \State BestGain $\gets$ gain
+                    \State BestCommunity $\gets$ neighbor
+                \EndIf
+            \EndFor
+            \Statex
+
+            \If{BestGain $> 0$}
+                \State move node to BestCommunity
+                \State can\_improve $\gets$ TRUE
+            \EndIf
+        \EndFor
+    \EndWhile
+    \Statex
+
+    \State new\_g $\gets null $
+    \For{each unique community}
+        \State add a node in new\_g
+    \EndFor
+    \For{u,v,w in G.edges}
+        \State comm\_u $\gets$ communities$_u$
+        \State comm\_v $\gets$ communities$_v$
+        \If{comm\_u $==$ comm\_v}
+            \State add self loop in new\_g
+        \Else
+            \State add edge between communities
+        \EndIf
+    \EndFor
+    \Statex
+
+    \State $G \gets $ new\_g
+\EndFor
+
+
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
 
 \newpage
-\begin{algorithm}[H]
-\SetKwFunction{FExpand}{expandBFS}
-\SetKwFunction{FContract}{contract}
-\SetKwFunction{FWeight}{weight}
-\SetKwFunction{FLimit}{calculateLimit}
-\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
 
-\Input{Hypergraph $H = (V, E)$, Current Partition $(V_0, V_1)$, Capacity parameter $\alpha$}
-\Output{Sub-hypergraph $H'$ for FlowCutter with source $s$ and target $t$}
+\begin{algorithm}
+\caption{Coarsening}
+\begin{algorithmic}
+    \State nodes $\gets $ shuffle(G.nodes)
+    \State matched $\gets \{\}$
+    \Statex
+    \For{node in nodes}
+        \If{node in matched}
+            \State continue
+        \EndIf
+        \State bestNeighbor $\gets$ null
+        \State maxRating $\gets -\infty$
+        \Statex
 
-\BlankLine
-\tcp{1. Identify initial border vertices}
-$B_0 \leftarrow \{v \in V_0 \mid \exists e \in E : v \in e \land e \cap V_1 \neq \emptyset\}$\;
-$B_1 \leftarrow \{v \in V_1 \mid \exists e \in E : v \in e \land e \cap V_0 \neq \emptyset\}$\;
+        \State neighbors $\gets$ neighborsLocalClusters(node)
+        \For{neighbor in neighbors}
+            \If{neighbor $==$ node $||$ neighbor in matched $||$ $\text{weight}_\text{node} + \text{weight}_\text{neighbor} > \text{maxVertexWeight}$ }
+                \State continue
+            \EndIf
+            \Statex
+            
 
-\BlankLine
-\tcp{2. Expand to find the Movable Set $M$}
-$L_0 \leftarrow \FLimit(\alpha, V_0)$ \tcp*{Weight limit for block 0 expansion}
-$L_1 \leftarrow \FLimit(\alpha, V_1)$ \tcp*{Weight limit for block 1 expansion}
+            \State $r \gets \text{rate}(\text{node},\text{neighbor})$
+            
+            \If{$r > \text{maxRating}$}
+                \State $\text{maxRating} \gets r$
+                \State $\text{bestNeighbor} \gets \text{neighbor}$
+            \EndIf
+        \EndFor
+        \Statex
 
-$M_0 \leftarrow \FExpand(B_0, V_0, L_0)$\;
-$M_1 \leftarrow \FExpand(B_1, V_1, L_1)$\;
-$M \leftarrow M_0 \cup M_1$\;
+        \If{bestNeighbor}
+            \State contract(node, bestNeighbor)
+            \State matched.add(node, bestNeighbor)
+        \EndIf
+    
+    \EndFor
+    \Statex
 
-\BlankLine
-\tcp{3. Contract stable vertices into source and target}
-$s \leftarrow \FContract(V_0 \setminus M)$\;
-$t \leftarrow \FContract(V_1 \setminus M)$\;
-$V_{active} \leftarrow M \cup \{s, t\}$\;
-
-\BlankLine
-\tcp{4. Filter hyperedges for the flow network}
-$E' \leftarrow \emptyset$\;
-\ForEach{$e \in E$}{
-    $e' \leftarrow e \cap V_{active}$\;
-    \If{$|e'| \ge 2$ \textbf{and} $e$ is not connected to other blocks}{
-        $E' \leftarrow E' \cup \{e'\}$\;
-    }
-}
-
-\Return $H' = (V_{active}, E')$ with terminals $(s, t)$\;
-
-\caption{FlowCutter Setup: Identifying the Refinement Corridor}
-\label{alg:flowcutter_setup}
+\end{algorithmic}
 \end{algorithm}
+
+
+
+\newpage
+
+\begin{algorithm}
+\caption{functions}
+\begin{algorithmic}
+
+    \Function{neighborsLocalClusters}{node}
+        \State neighbors $\gets \{\}$
+        \For{edge in incidentEdges$_\text{node}$}
+            \If{len(edge.vertices) $\le$ threshold}
+                \Statex
+                \For{neighbor in edge.vertices}
+                    \If{neighbor $\ne$ node}
+                        neighbors.add(neighbor)
+                    \EndIf
+                \EndFor
+                \Statex
+            \EndIf
+        \EndFor
+        \Statex
+        \State \Return neighbors
+    \EndFunction
+    \Statex
+
+    \Function{rate}{node, neighbor}
+        \State s $\gets \text{incidentEdges}_\text{node} \cap \text{incidentEdges}_\text{neighbor}$
+        \State \Return $\sum_{e}^{s}{1/\text{len(e.vertices)} - 1}$
+    \EndFunction
+    \Statex
+
+    \Function{contract}{node, neighbor}
+       \State node.weight $\gets$ node.weight $+$ neighbor.weight
+
+       \For{edge in incidentEdges$_\text{neighbor}$}
+            \State edge.removeVertex(neighbor)
+            \If{! node in edge.vertices}
+                \State edge.addVertex(node)
+                \State node.addIncidentEdge(edge)
+            \EndIf
+            \Statex
+
+            \If{len(edge.vertices) $< 2$}
+                \State removeEdge(edge)
+            \EndIf
+       \EndFor
+        \State removeVertex(neighbor)
+    \EndFunction
+
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
+\newpage
+
+\begin{algorithm}
+\caption{RB}
+\begin{algorithmic}
+    \Function{recursiveBipartition}{$G$, $k$}
+        \If{$k \le 1$}:
+            \State \Return $\{\}$
+        \EndIf
+    
+        \State $V_0, V_1 \gets$  2wayPartition($G$)
+        \State $G_0 \gets$ new graph with only $V_0$
+        \State $G_1 \gets$ new graph with only $V_1$
+
+        \State left $\gets$ recursiveBipartition($G_0$, $k/2$)
+        \State right $\gets$ recursiveBipartition($G_1$, $k/2$)
+        \State \Return $\text{left} + \text{right}$
+    \EndFunction
+    \Statex
+
+    \Function{2wayPartition}{$G$}
+        \State hierarchy $\gets \{G\}$
+        \State currentG $\gets G$
+
+            
+        \While{currentG.numVertices $>$ threshold} 
+            \State newG $\gets$ coarse(currentG)
+            \State hierarchy.append(newG)
+            \State currentG $\gets$ newG
+        \EndWhile
+        \Statex
+    
+        \State cut $\gets$ partition(currentG)
+        \Statex
+        
+        \While{hierarchy}
+            \State coarsedG $\gets$ hierarchy.pop()
+            \State cut $\gets$ projectCut(cut, coarsedG)
+        \EndWhile
+
+        \State \Return cut
+    \EndFunction
+    \Statex
+
+    \Function{projectCut}{$cut$, $G$}
+        \State newPartition $\gets \{\}$
+    
+        \For{node in G.nodes}
+            \State SU $\gets$ node.parent 
+            \State newPartition$_\text{node} \gets \text{cut}_\text{SU}$
+        \EndFor
+        \State \Return newPartition
+    \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\newpage
+
+\begin{algorithm}
+\caption{RB2}
+\begin{algorithmic}
+    \Function{partition}{$G$}
+        \State bestSize $\gets \infty$
+        \State bestPartition $\gets$ null
+        \Statex
+
+        \For{attempt in range(attempts)}
+
+            \State $rand_0, rand_1 \gets $ Two random nodes from $G$
+            \State $block_0 \gets \{rand_0\}$
+            \State $block_1 \gets \{rand_1\}$
+            \Statex
+            
+            \State $candidates_0 \gets \text{PriorityQueue}(rand_0.\text{neighbors})$
+            \State $candidates_1 \gets \text{PriorityQueue}(rand_1.\text{neighbors})$
+            \State $\text{targetWeight} \gets \text{G.totalWeight}/2$
+            \Statex
+            
+            \While{$len(block_0) + len(block_1) < \text{G.vertices}$}
+                
+                \State currentBlock $\gets$ Current Smaller block
+                \State currentQueue $\gets$ Queue relative to the current block
+                \Statex
+                
+                \If{! currentQueue.empty}
+                    \State maxNode $\gets$ currentQueue.popMaxGainNode()
+                    
+                    \If{! maxNode in $block_0$ $\&\&$ ! maxNode in $block_1$}
+                        \State currentBlock.add(maxNode)
+                        \Statex
+                        
+                        \For{neighbor in maxNode.neighbors}
+                            \If{! neighbor in $block_0$ $\&\&$ ! neighbor in $block_1$}
+                                \State currentQueue.insert(neighbor)
+                            \EndIf
+                        \EndFor
+                        \Statex
+                        
+                    \EndIf
+                \Else
+                    \State currentBlock.add(G.getRandomUnassignedNode())
+                \EndIf
+            \EndWhile
+            \Statex
+
+            \State partition $\gets (block_0, block_1)$ 
+        
+            \If{partition.cutSize $<$ bestSize}
+                \State bestSize $\gets$ partition.cutSize
+                \State bestPartition $\gets$ partition
+            \EndIf
+    
+        \EndFor
+    
+    
+        \State \Return bestPartition
+    \EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\newpage
+
+\begin{algorithm}
+\caption{Contraction}
+\begin{algorithmic}
+
+    \Function{contractNet}{node}
+        \If{node is a Leaf}
+            \State \Return contractLocal(node.tensors)
+        \EndIf
+    
+        \State leftTensor  $\gets$ contractNet(node.left)
+        \State rightTensor  $\gets$ contractNet(node.right)
+    
+    \EndFunction
+
+\end{algorithmic}
+\end{algorithm}
+
+
 
 \end{document}

@@ -33,7 +33,7 @@
   2. for each vertex u find a partner v with the highest rating and contract them
     - v is removed from the graph
     - v is only considered if the it doesnt surpass the maximum vertex weight
-    - when more than one cadidate is found the one that has not participated of any contractions 
+    - when more than one candidate is found the one that has not participated of any contractions 
       yet is chosen
     - for large nets the rating function is not evaluated
   3. stop pass when every node was considered and start another pass with a new permutation
