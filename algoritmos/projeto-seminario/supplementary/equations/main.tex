@@ -158,7 +158,7 @@ $$
 \State $V \gets \text{Partition(${G, cut, \epsilon, k}$)}$
 
 \State $\text{cost} \gets \text{Cost($V$)}$
-\If{$\text{cost} \lt B$}
+\If{$\text{cost} < B$}
     \State $B \gets \text{cost}$
     \State $BG \gets V$
 \EndIf
@@ -306,7 +306,7 @@ $$
                 \Statex
                 \For{neighbor in edge.vertices}
                     \If{neighbor $\ne$ node}
-                        neighbors.add(neighbor)
+                        \State neighbors.add(neighbor)
                     \EndIf
                 \EndFor
                 \Statex
