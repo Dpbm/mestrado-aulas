@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "articles/cutensornet reference.md",
+                "file": "articles/The ITensor Software Library for Tensor Network Calculations/The ITensor Software Library for Tensor Network Calculations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cutensornet reference"
+              "title": "The ITensor Software Library for Tensor Network Calculations"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 374.5
+    "width": 706.5
   },
   "right": {
     "id": "3349428a8b7c5c8c",
@@ -185,8 +185,24 @@
   },
   "active": "6987ec7394899ceb",
   "lastOpenFiles": [
-    "Template.md",
+    "articles/Approximate simulation of complex quantum circuits using sparse tensors/Approximate simulation of complex quantum circuits using sparse tensors.md",
+    "articles/Algorithms for Tensor Network Contraction Ordering/Algorithms for Tensor Network Contraction Ordering.md",
+    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/Tensor Network Quantum Simulator With Step-Dependent Parallelization.md",
+    "articles/Simulating quantum computation by contracting tensor networks/Simulating quantum computation by contracting tensor networks.md",
+    "articles/Simulating quantum circuits using tree tensor networks/Simulating quantum circuits using tree tensor networks.md",
+    "articles/Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/Jet - Fast quantum circuit simulations with parallel task-based tensor-network contraction.md",
+    "articles/Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale/Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale.md",
+    "articles/ExaTN Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale/ExaTN Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale.md",
+    "articles/The ITensor Software Library for Tensor Network Calculations/The ITensor Software Library for Tensor Network Calculations.md",
+    "articles/Tensor Networks for Quantum Machine Learning/Tensor Networks for Quantum Machine Learning.md",
+    "articles/Quantum-Classical Computing via Tensor Networks/Quantum-Classical Computing via Tensor Networks.md",
+    "articles/Fast counting with tensor networks/Fast counting with tensor networks.md",
+    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/Classical Simulation of Intermediate-Size Quantum Circuits.md",
+    "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States.md",
+    "articles/Taking the Human Out of the Loop: A Review of Bayesian Optimization/Taking the Human Out of the Loop: A Review of Bayesian Optimization.md",
+    "articles/Efficient tensor-network simulations of weakly-measured quantum circuits/Efficient tensor-network simulations of weakly-measured quantum circuits.md",
     "articles/cutensornet reference.md",
+    "Template.md",
     "articles/Deep Multilevel Graph Partitioning/Deep Multilevel Graph Partitioning.md",
     "articles/METIS/METIS.md",
     "articles/Deep Multilevel Graph Partitioning",
@@ -194,32 +210,16 @@
     "articles/Hyper-optimized tensor network contraction/Hyper-optimized tensor network contraction.md",
     "articles/METIS",
     "articles/Simulating quantum computation by contracting tensor networks/1.png",
-    "articles/Simulating quantum computation by contracting tensor networks/Simulating quantum computation by contracting tensor networks.md",
-    "articles/Simulating quantum circuits using tree tensor networks/Simulating quantum circuits using tree tensor networks.md",
     "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/algo1.png",
-    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization/Tensor Network Quantum Simulator With Step-Dependent Parallelization.md",
-    "articles/Tensor Networks for Quantum Machine Learning/Tensor Networks for Quantum Machine Learning.md",
     "articles/Tensor Networks for Quantum Machine Learning/PEPS.png",
     "articles/Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks/Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks.md",
-    "articles/Tensor Network quantum Virtual Machine for Simulating quantum Circuits at Exascale/Tensor Network quantum Virtual Machine forSimulating quantum Circuits at Exascale.md",
     "articles/Recent Advances in Graph Partitioning/Recent Advances in Graph Partitioning.md",
-    "articles/Jet - Fast quantum circuit simulations with parallel ewline task-based tensor-network contraction/Jet - Fast quantum circuit simulations with parallel task-based tensor-network contraction.md",
-    "articles/ExaTN Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale/ExaTN Scalable GPU-Accelerated High-Performance Processing of General Tensor Networks at Exascale.md",
-    "articles/Taking the Human Out of the Loop: A Review of Bayesian Optimization/Taking the Human Out of the Loop: A Review of Bayesian Optimization.md",
     "articles/Quantum Tensor Networks in a Nutshell/Quantum Tensor Networks in a Nutshell.md",
-    "articles/Algorithms for Tensor Network Contraction Ordering/Algorithms for Tensor Network Contraction Ordering.md",
-    "articles/Approximate simulation of complex quantum circuits using sparse tensors/Approximate simulation of complex quantum circuits using sparse tensors.md",
-    "articles/Classical Simulation of Intermediate-Size Quantum Circuits/Classical Simulation of Intermediate-Size Quantum Circuits.md",
     "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices/Density matrix representation of hybrid tensor networks for noisy quantum devices.md",
-    "articles/Efficient tensor-network simulations of weakly-measured quantum circuits/Efficient tensor-network simulations of weakly-measured quantum circuits.md",
-    "articles/Quantum-Classical Computing via Tensor Networks/Quantum-Classical Computing via Tensor Networks.md",
     "articles/Orthogonal Matrices and Gram-Schmidt/Orthogonal Matrices and Gram-Schmidt.md",
-    "articles/Fast counting with tensor networks/Fast counting with tensor networks.md",
-    "articles/Community structure in social and biological networks/Community structure in social and biological networks.md",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/2.png",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/4.png",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/3.png",
-    "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States.md",
     "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States",
     "articles/The ITensor Software Library for Tensor Network Calculations/5.png",
     "articles/The ITensor Software Library for Tensor Network Calculations/4.png",
