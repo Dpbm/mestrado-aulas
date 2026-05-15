@@ -24,7 +24,7 @@ $$ y |x \stackrel{}{\sim} \mathcal{N}(f(x), \sigma²) $$
 * $GP(\mu_0, k)$
 * mean function $\mu_0 : \mathbb{R}^m \to \mathbb{R}$
 * kernel/convariance function $k : \mathbb{R}^m \times  \mathbb{R}^m \to \mathbb{R}$
-* any finite collection of $n$ points $x_{1:n}$ the values of $f(x_1), f(x_2), \cdots, f(x_n$)$ are Gaussian with mean $m$ where $m_i = \mu_0(x_i)$ and $n \times n$ covariance matrix $K$ where $K_{ij} = k(x_i, x_j)$
+* any finite collection of $n$ points $x_{1:n}$ the values of $f(x_1), f(x_2), \cdots, f(x_n$) are Gaussian with mean $m$ where $m_i = \mu_0(x_i)$ and $n \times n$ covariance matrix $K$ where $K_{ij} = k(x_i, x_j)$
 * At any arbitrary test location $x$ we can query the model for the predicted $\hat{f}_n(x)$ conditioned on the observed data $D_n$
 
 ## Volume Doubling
@@ -37,7 +37,7 @@ $$ y |x \stackrel{}{\sim} \mathcal{N}(f(x), \sigma²) $$
 	* Using the surrogate model, the expectation upon a fixed $\tau$ target can be computed analytically
 	* relies on an improvement function which has a target $\tau$ to improve upon
 	$$ I(x) = (f(x) − \tau ) I[f(x) \ge \tau ] $$
-	* whe we set $\tau$ to the best output value, the function is named $\textbf{goal seeking}$. Otherwise, we could use a proxy for that value, such as the best seen value so far
+	* when we set $\tau$ to the best output value, the function is named $\textbf{goal seeking}$. Otherwise, we could use a proxy for that value, such as the best seen value so far
 		* using the best value $y^{+}$ can lead to lack of exploration, so usually a value $\zeta$ is used to improve that
 
 ![[algo.png]]
