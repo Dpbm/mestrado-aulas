@@ -41,3 +41,9 @@ $$ y |x \stackrel{}{\sim} \mathcal{N}(f(x), \sigma²) $$
 		* using the best value $y^{+}$ can lead to lack of exploration, so usually a value $\zeta$ is used to improve that
 
 ![[algo.png]]
+
+
+----
+
+## What Is Surrogate Optimization?
+Reference: https://www.mathworks.com/help/gads/what-is-surrogate-optimization.html

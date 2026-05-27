@@ -79,7 +79,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 228.5
+    "width": 418.5,
+    "collapsed": true
   },
   "right": {
     "id": "3349428a8b7c5c8c",
@@ -187,8 +188,10 @@
   "active": "6987ec7394899ceb",
   "lastOpenFiles": [
     "articles/Unbounded Bayesian Optimization via Regularization/algo.png",
-    "articles/The ITensor Software Library for Tensor Network Calculations/The ITensor Software Library for Tensor Network Calculations.md",
     "articles/Unbounded Bayesian Optimization via Regularization/Unbounded Bayesian Optimization via Regularization.md",
+    "articles/Gaussian Processes for Machine Learning/Gaussian Processes for Machine Learning.md",
+    "articles/Gaussian Processes for Machine Learning",
+    "articles/The ITensor Software Library for Tensor Network Calculations/The ITensor Software Library for Tensor Network Calculations.md",
     "articles/Unbounded Bayesian Optimization via Regularization",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/Approximate simulation of complex quantum circuits using sparse tensors.md",
     "articles/Algorithms for Tensor Network Contraction Ordering/Algorithms for Tensor Network Contraction Ordering.md",
@@ -218,19 +221,16 @@
     "articles/Tensor Networks for Quantum Machine Learning/PEPS.png",
     "articles/Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks/Hand-waving and Interpretive Dance: An Introductory Course on Tensor Networks.md",
     "articles/Recent Advances in Graph Partitioning/Recent Advances in Graph Partitioning.md",
-    "articles/Quantum Tensor Networks in a Nutshell/Quantum Tensor Networks in a Nutshell.md",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/2.png",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/4.png",
     "articles/Approximate simulation of complex quantum circuits using sparse tensors/3.png",
     "articles/A Practical Introduction to Tensor Networks Matrix Product States and Projected Entangled Pair States",
     "articles/The ITensor Software Library for Tensor Network Calculations/5.png",
     "articles/The ITensor Software Library for Tensor Network Calculations/4.png",
-    "articles/The ITensor Software Library for Tensor Network Calculations/3.png",
     "articles/The ITensor Software Library for Tensor Network Calculations",
     "articles/Hyper-optimized tensor network contraction",
     "articles/Density matrix representation of hybrid tensor networks for noisy quantum devices",
     "articles/Quantum Tensor Networks in a Nutshell",
-    "articles/Tensor Networks for Quantum Machine Learning",
-    "articles/Tensor Network Quantum Simulator With Step-Dependent Parallelization"
+    "articles/Tensor Networks for Quantum Machine Learning"
   ]
 }
