@@ -101,3 +101,4 @@ marimo/_lsp/
 __marimo__/
 .streamlit/secrets.toml
 algoritmos/projeto-seminario/Artigo\ -\ Alexandre Silva.pdf
+*.o
