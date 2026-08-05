@@ -102,3 +102,5 @@ __marimo__/
 .streamlit/secrets.toml
 algoritmos/projeto-seminario/Artigo\ -\ Alexandre Silva.pdf
 *.o
+sistemas-distribuidos/resumos/
+sistemas-distribuidos/materiais/
