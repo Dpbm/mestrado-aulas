@@ -1,0 +1,74 @@
+\documentclass{paper}
+
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+
+\renewcommand{\refname}{Referências}
+
+\title{Aplicação de Conceitos de Sistemas Distribuidos em Aplicações QAOA}
+\author{Alexandre Silva \\ \texttt{alexandre.silva1@unesp.br}}
+
+\bibliographystyle{ieeetr}
+
+\begin{document}
+
+
+\maketitle
+
+\noindent
+\textbf{Tema: Como usar métodos e tecnologias clássicas de computação distribuída para resolver QAOA.} 
+
+
+\section{Introdução}
+
+Computação quântica é uma área de grande interesse nos dias de hoje, visto a teórica capacidade de resolver problemas computacionalmente complexos em tempo hábil. Contudo, computadores quânticos atuais são propensos à erros e não possuem a quantidade necessária de qubits para a implementação de algoritmos considerados mais complexos.
+
+Para solucionar este problema, pesquisadores vêm adotando métodos híbridos, como QAOA. Nestes, um circuito (algoritmo quântico) pequeno é executado em um computador quântico (ou ainda simulador em um computador clássico) e, com base nos resultados, um computador clássico se encarrega de otimizar os parâmetros usados no circuito.
+
+No entanto, mesmo com o emprego de métodos híbridos, a carga necessária tanto de otimização como de execução acabam acarretando no aumento do custo computacional para ambos os lados.
+
+Devido a isto, métodos de distribuição de circuitos entre um conjunto de clusters e QPUs (Quantum Processing Units) tem se destacado como uma solução alternativa para a atual geração de computadores quânticos.
+
+\section{Proposta}
+
+Com isso, neste trabalho, é proposto a revisção dos principais métodos divulgados na literatura para a simulação e execução de QAOA (Quantum Approximate Optimization Algorithm) de forma distribuída (DQAOA) tanto entre clusters como o conjunto cluster + QPUs.
+
+
+Dentre os artigos usados para a pesquisa preliminar deste trabalho. Encontrou-se a aplicação dos seguintes conhecimentos dentre o leque de possibilidades em computação distribuída:
+
+\begin{enumerate}
+	\item Em \cite{GPU} e \cite{QuantumCentric}, foram discutidas algumas maneiras de como repartir um problema baseado em QAOA em sub-QUBOs menores que podem ser processados em nós diferentes dentro de um cluster de forma paralela.
+	
+	\item Em artigos como \cite{GPU,QuantumCentric,DistributedSimulator,EndToEnd}, são discutidas maneiras de como manter uma comunicação entre nós usando \textit{MPI}. Além disso, também discutem como unir os resultados parciais e como garantir que problemas que possuem \textit{overlap} podem ser resolvidos de forma dsitribuída, garantindo que correlações serão mantidas e a solução global possa ser alcançada.
+	
+	Outro fator interessante abordado, é como realizar a aplicação de operadores de forma dinâmica entre nós a partir da comunicação entre eles via \textit{MPI} ou similares. Tal método abordado, pode tanto aplicar correções com base em resultados clássicos de medidas, ou ainda a aplicação de denominados \textit{TeleGates}, que são operadores de mais de um qubit que são separados e correlacionados à distância.
+	
+	\item Também é abordado em \cite{GPU,DistributedSimulator,EndToEnd,Datacenters}, como seria possível utilizar tanto clsuters, dotados de CPU e GPU, assim como QPUs. Nestes casos, também são abordados as camadas de software necessárias para gerenciar estes jobs.
+	
+	\item Em \cite{Datacenters}, foi mostrado um conjunto de softwares criados com o fim de: repartir o problema, submeter jobs, gerenciar jobs, alocar recursos, unir resultados, entre outros; tudo de forma transparente, utilizando serviços da \textit{AWS} para gerar a infraestrutura necessária. Neste projeto, foram utilizados filas \textit{SQS}, \textit{Elastic} e \textit{Amazon Braket}.
+	
+\end{enumerate}
+
+Quero abordar estes trabalhos e algumas das técnicas propostas com o enfoque em métodos de computação distribuida.
+
+Além dos exemplos de técnicas citadas acima, existem outras que também foram abordadas nos artigos e quero adicionar neste trabalho, sendo elas:
+
+\begin{enumerate}
+	\item Load Balancing;
+	\item Caching;
+	\item Tolerância à falhas;
+\end{enumerate}
+
+Sendo assim, este projeto tem como objetivo entender: \textbf{como usar métodos e tecnologias clássicas de computação distribuída para resolver problemas QAOA}.
+
+
+\section{Motivação}
+
+A decisão do tema deste trabalho se deu com base no tema da minha pesquisa de mestrado. Nela, utilizarei DQAOA para acelerar certos algoritmos em bioinformática. 
+
+Sendo assim, este trabalho surgiu de encontro com os interesses do meu projeto e me proporcionou a possibilidade de aproveitar o momento para já desbravar a literatura atual.
+
+
+\bibliography{reference}
+
+\end{document}
