@@ -1,0 +1,73 @@
+\documentclass{paper}
+
+\usepackage{hyperref}
+
+\title{Classificador para Doença de Alzheimer}
+
+\author{Alexandre Silva \\ \texttt{alexandre.silva1@unesp.br}}
+
+
+\renewcommand{\refname}{Referências}
+\bibliographystyle{ieeetr}
+
+\begin{document}
+	\maketitle
+	
+\section{Introdução}
+
+A Doença de Alzheimer é um transtorno neurodegenerativo progressivo que se manifesta pela deterioração cognitiva e da memoria \cite{GOV}. Esta doença, é a principal forma de demência, representando cerca de $60$-$70\%$ dos casos no mundo \cite{OMS}. A OMS estima que até 2030 o número de casos deve chegar à casa dos $75$ milhões, sendo a maioria dos casos pessoas vivendo em países com baixa e média renda \cite{OMS}.
+
+Assim como a cartilha sobre demência publicada pela OMS em 2017 promove \cite{OMS}, é fundamental a coleta de dados e a implementação de sistemas que possam monitorar a evolução da doença na população, assim como a aparição de seus indicadores, promovendo melhores tratamentos e serviços de saúde.
+
+\section{Proposta}
+
+Motivado por esta cartilha \cite{OMS} e por questões familiares. Neste trabalho proponho o desenvolvimento de uma pipeline para a criação de um modelo de classificação para a doença de Alzheimer.
+
+O dataset utilizado para isso será proveniente de uma competição do Kaggle da qual pode ser encontrada em \cite{Kaggle}. 
+
+O dataset foi préviamente dividido entre treino e teste. Cada linha do dataset representa um paciente, e cada coluna possui um indicador, seja de questões demográficas, históricas, médicas ou ainda sintomas.
+
+\section{Metodologia}
+
+Para isso, pretendo seguir a metodologia baseada em CRISP-DM. Essa escolha foi feita visto a necessidade de entendermos melhor o dominio do problema. Neste caso, é preciso entender melhor os indicadores e outros fatores mais especificos da àrea médica. Sendo assim, essa metodologia se enquadraria melhor no que é necessário para este projeto.
+
+Além disso, tem-se o objetivo de processar os dados e comparar diferentes modelos de classificação em busca de melhores acurácias para o determinado problema.
+
+Como revisado em \cite{Review}, existem duas modalidades principais de métodos, sendo o primeiro baseado em imagens e outra baseada em dados clinicos e relacionados à vida do paciente. No caso da segunda modalidade, modelos baseados em \textit{Ensambles}, \textit{Árvores de Decisão} e \textit{Clusterização} foram mostrados como os mais difundidos para este tipo de dado.
+
+Em \cite{4Methods}, os autores aplicaram \textit{Random Forest}, \textit{KNN}, \textit{Naïve Bayes} e \textit{SVM} como classificadores para datasets providos pela \textit{NACC} e \textit{ADNI}. O objetivo deste projeto era buscar modelos que pudessem classificar indivíduos em multiplas classes da doença de Alzheimer, usando modelos que são mais interpretáveis quando comparados com redes neurais. Como resultado, modelos baseados em \textit{Random Forest} e \textit{SVM} apresentaram os maiores níveis de \textit{acurácia}, \textit{precision} e \textit{recall}.
+
+Por fim, em \cite{Multimodal}, foi proposto um modelo classificador multimodal baseado em \textit{Random Forest} em conjunto com modelos treinados para dar explicações sobre os resultados, auxiliando no diagnóstico médico. 
+
+Com base nesses estudos, pretendo explorar \textit{Random Forest}, devido ao seu amplo uso na área, e métodos baseados em \textit{ensamble}, sendo eles \textit{AdaBoost} e \textit{XGBoost}, devido à minha vontade de aprender mais a fundo sobre eles e aplicar em projetos.
+
+Além disso, pode-se tomar como base alguns métodos de pré-processamento que foram discutidos nos artigos citados \cite{4Methods,Multimodal,Review}.
+
+Também será feita a busca por hiperparâmetros melhores para o caso do dataset escolhido.
+
+\section{Cronograma}
+
+O cronograma proposto para este trabalho segue-se a baixo:
+
+\begin{center}
+	\begin{tabular}{ |c|c| } 
+		\hline
+		Atividade & Datas \\
+		\hline
+		Entender o domínio & 8 Setembro - 18 Setembro  \\ 
+		Explorar os dados & 21 Setembro - 29 Setembro \\ 
+		Busca de Hiperparâmetros e Treinamento  & 30 Setembro - 02 Outubro \\ 
+		Verificação dos resultados (Visualizações)  & 5 Outubro - 9 Outubro \\ 
+		Deploy do melhor modelo criado (Streamlit)  & 12 Outubro - 13 Outubro \\ 
+		\hline
+		Criação do artigo & 8 Setembro - 13 Outubro\\
+		Criação dos slides & 13 Outubro - 20 Outubro\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Como o \textit{CRISP-DM} é uma metodologia iterativa e interativa, poderei voltar à etapas anteriores, caso necessário, para criar conhecimento mais sólido sobre o problema. 
+
+\bibliography{references}
+	
+\end{document}
