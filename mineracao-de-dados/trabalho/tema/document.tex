@@ -21,29 +21,33 @@ Assim como a cartilha sobre demência publicada pela OMS em 2017 promove \cite{O
 
 \section{Proposta}
 
-Motivado por esta cartilha \cite{OMS} e por questões familiares. Neste trabalho proponho o desenvolvimento de uma pipeline para a criação de um modelo de classificação para a doença de Alzheimer.
+Motivados por esta cartilha \cite{OMS} e por questões familiares. Neste trabalho propõem-se o desenvolvimento de uma pipeline para a criação de um modelo de classificação para a doença de Alzheimer.
 
-O dataset utilizado para isso será proveniente de uma competição do Kaggle da qual pode ser encontrada em \cite{Kaggle}. 
+O dataset utilizado para isso será proveniente de uma competição do Kaggle, da qual pode ser encontrada em \cite{Kaggle}. 
 
-O dataset foi préviamente dividido entre treino e teste. Cada linha do dataset representa um paciente, e cada coluna possui um indicador, seja de questões demográficas, históricas, médicas ou ainda sintomas.
+Neste trabalho, visa-se responder a questão: \textbf{Modelos treinados baseando-se, somente, em dados de estilo de vida e testes clínicos conseguem assertividade equiparada à modelos dotados de maiores informações sobre o paciente?}
+
+Esta questão é baseada nas pesquisa disponíveis em \cite{Lifestyle} e \cite{Cardiovascular}, das quais demonstram a forte ligação entre fatores como tabagismo, pouca atividade fisica e pressão alta, à demência. Neste caso, queremos validar se se baseando apenas nestes fatores, seria possível gerar modelos relativamente mais simples e com assertividade equiparável à modelos com mais informações sobre histórico do paciente.
 
 \section{Metodologia}
 
 Para isso, pretendo seguir a metodologia baseada em CRISP-DM. Essa escolha foi feita visto a necessidade de entendermos melhor o dominio do problema. Neste caso, é preciso entender melhor os indicadores e outros fatores mais especificos da àrea médica. Sendo assim, essa metodologia se enquadraria melhor no que é necessário para este projeto.
 
-Além disso, tem-se o objetivo de processar os dados e comparar diferentes modelos de classificação em busca de melhores acurácias para o determinado problema.
-
-Como revisado em \cite{Review}, existem duas modalidades principais de métodos, sendo o primeiro baseado em imagens e outra baseada em dados clinicos e relacionados à vida do paciente. No caso da segunda modalidade, modelos baseados em \textit{Ensambles}, \textit{Árvores de Decisão} e \textit{Clusterização} foram mostrados como os mais difundidos para este tipo de dado.
+Com relação aos algoritmos e relacionados, como revisado em \cite{Review}, existem duas modalidades principais de métodos, sendo o primeiro baseado em imagens e outra baseada em dados clinicos e sobre a vida do paciente. No caso da segunda modalidade, modelos baseados em \textit{Ensambles}, \textit{Árvores de Decisão} e \textit{Clusterização} foram mostrados como os mais difundidos para este tipo de dado.
 
 Em \cite{4Methods}, os autores aplicaram \textit{Random Forest}, \textit{KNN}, \textit{Naïve Bayes} e \textit{SVM} como classificadores para datasets providos pela \textit{NACC} e \textit{ADNI}. O objetivo deste projeto era buscar modelos que pudessem classificar indivíduos em multiplas classes da doença de Alzheimer, usando modelos que são mais interpretáveis quando comparados com redes neurais. Como resultado, modelos baseados em \textit{Random Forest} e \textit{SVM} apresentaram os maiores níveis de \textit{acurácia}, \textit{precision} e \textit{recall}.
 
 Por fim, em \cite{Multimodal}, foi proposto um modelo classificador multimodal baseado em \textit{Random Forest} em conjunto com modelos treinados para dar explicações sobre os resultados, auxiliando no diagnóstico médico. 
 
-Com base nesses estudos, pretendo explorar \textit{Random Forest}, devido ao seu amplo uso na área, e métodos baseados em \textit{ensamble}, sendo eles \textit{AdaBoost} e \textit{XGBoost}, devido à minha vontade de aprender mais a fundo sobre eles e aplicar em projetos.
+Com base nesses estudos, pretende-se explorar métodos baseados em \textit{ensamble}, sendo eles \textit{Random Forest}, \textit{AdaBoost} e \textit{XGBoost}, devido a nossa curiosidade sobre o tópico. Além destes, também propomos o treinamento de modelos mais simples para comparação, como \textit{Árvores de Decisão} e \textit{Regressão Logistica}.
 
-Além disso, pode-se tomar como base alguns métodos de pré-processamento que foram discutidos nos artigos citados \cite{4Methods,Multimodal,Review}.
+Para avaliar os modelos, adotaremos os métodos aplicados nos estudos que utilizamos como base, sendo eles: \textit{acurácia}, \textit{precision} e \textit{recall}. Além destes, propomos o uso de \textit{F1 Score} e \textit{ROC-AUC}. Dado que nossa classe alvo,\textbf{"Possui Alzheimer"}, é binária, não é necessário nos preocuparmos com os métodos de média utilizados pelas métricas, sendo que para nós o mais importante são as instâncias de casos positivos para a doença.
 
-Também será feita a busca por hiperparâmetros melhores para o caso do dataset escolhido.
+Rotinas de pré-processamento podem ser baseados nas pipelines propostas por alguns dos artigos citados \cite{4Methods,Multimodal,Review}.
+
+Uma vez que os dados do dataset são préviamente repartidos em treino e teste. Utilizaremos Validação cruzada na porção designada para treino, de forma que amostras sejam divididas entre treino e validação, sendo a porção de validação utilizada para tunagem de \textit{híper-parâmetros} dos modelos.
+
+Outro fator a ser abordado neste trablho, é a interpretação dos modelos gerados. Para isso, serão utilizados métodos como \textit{Gini} (para árvores) e \textit{SHAP}. Estes, nos ajudarão a entender como cada atributo usado no treinamento contribui para o modelo final.
 
 \section{Cronograma}
 
@@ -66,7 +70,7 @@ O cronograma proposto para este trabalho segue-se a baixo:
 	\end{tabular}
 \end{center}
 
-Como o \textit{CRISP-DM} é uma metodologia iterativa e interativa, poderei voltar à etapas anteriores, caso necessário, para criar conhecimento mais sólido sobre o problema. 
+Como o \textit{CRISP-DM} é uma metodologia iterativa e interativa, podemos regressar à etapas anteriores, caso necessário, para criar conhecimento mais sólido sobre o problema. 
 
 \bibliography{references}
 	
