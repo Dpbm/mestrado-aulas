@@ -1,7 +1,8 @@
 [project]
-name = "projeto"
+name = "atividade1"
 version = "0.1.0"
 description = "Add your description here"
+readme = "README.md"
 authors = [
     { name = "Dpbm", email = "dpbm136@gmail.com" }
 ]
@@ -12,10 +13,11 @@ dependencies = [
     "matplotlib>=3.11.2",
     "numpy>=2.5.3",
     "pandas>=3.0.6",
-    "plotly[express]>=7.1.0",
-    "scikit-learn>=1.9.1",
     "seaborn>=0.13.2",
 ]
+
+[project.scripts]
+atividade1 = "atividade1:main"
 
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
