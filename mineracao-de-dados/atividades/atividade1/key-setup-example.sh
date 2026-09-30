@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-export KAGGLE_API_TOKEN=
+export KAGGLE_API_TOKEN=<SUA TOKEN AQUI>
