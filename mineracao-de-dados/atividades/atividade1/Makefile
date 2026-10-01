@@ -2,5 +2,5 @@
 
 SHELL := /usr/bin/bash
 
-analysis:
+run:
 	source key-setup.sh && uv run jupyter lab
