@@ -1,4 +1,4 @@
-.PHONY: analysis
+.PHONY: run
 
 SHELL := /usr/bin/bash
 
