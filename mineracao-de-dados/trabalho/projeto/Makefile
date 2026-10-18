@@ -1,6 +1,6 @@
-.PHONY: run
+.PHONY: analysis
 
 SHELL := /usr/bin/bash
 
-run:
+analysis:
 	source key-setup.sh && uv run jupyter lab
