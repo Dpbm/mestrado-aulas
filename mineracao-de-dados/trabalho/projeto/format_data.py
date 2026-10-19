@@ -4,11 +4,13 @@ Utilities for formating the dataset and applying the things we need.
 
 import pandas as pd
 
-def additional_columns(df:pd.DataFrame):
+def format_columns(df:pd.DataFrame):
     """
-    Add additional columns needed for the tests
-    """
+    Format columns and data from the given dataset.
 
+    Meant to be used for both training and test CSV.
+    """
+    
     # from table extracted from: https://media.geeksforgeeks.org/wp-content/uploads/20231206171725/BMI-2.png
     # original article at: https://www.geeksforgeeks.org/utilities/bmi-calculator/
     df["BMI_cat"] = "Underweight"
@@ -27,6 +29,7 @@ def additional_columns(df:pd.DataFrame):
     # Cholesterol is divided by 38.67 to convert from mm/dL to mmol/L https://heartcare.sydney/cholesterol-unit-conversion/
     df["cholesterol_mmol_L"] = df["CholesterolTotal"] / 38.67
 
+    # -------------------------- INDICATORS ---------------------------------------------
     # Indicator derived from:
         # J. A. Pillai et al., “Metabolic syndrome biomarkers relate to rate of cognitive decline in MCI and dementia stages of Alzheimer’s disease,” Alz Res Therapy, vol. 15, no. 1, p. 54, Mar. 2023, doi: 10.1186/s13195-023-01203-y.
 
@@ -42,13 +45,6 @@ def additional_columns(df:pd.DataFrame):
         # E. D. Moser et al., “Association Between Fluctuations in Blood Lipid Levels Over Time With Incident Alzheimer Disease and Alzheimer Disease–Related Dementias,” Neurology, vol. 101, no. 11, pp. e1127–e1136, Sep. 2023, doi: 10.1212/WNL.0000000000207595.
         # M. M. Bernath et al., “Serum triglycerides in Alzheimer disease,” Neurology, vol. 94, no. 20, pp. e2088–e2098, May 2020, doi: 10.1212/WNL.0000000000009436.
     df["T/HDL"] = df["CholesterolTriglycerides"]/df["CholesterolHDL"]
-
-def format_columns(df:pd.DataFrame):
-    """
-    Format columns and data from the given dataset.
-
-    Meant to be used for both training and test CSV.
-    """
     
     # points were based on 
         # K. Dhana, D. A. Evans, K. B. Rajan, D. A. Bennett, and M. C. Morris, “Healthy lifestyle and the risk of Alzheimer dementia,” Neurology, vol. 95, no. 4, pp. e374–e383, Jul. 2020, doi: 10.1212/WNL.0000000000009816.
@@ -75,4 +71,19 @@ def format_columns(df:pd.DataFrame):
     df.loc[(df["SystolicBP"] >= 140) | (df["DiastolicBP"] >= 90) | (df["cholesterol_mmol_L"] >= 6.22) | (df["Diabetes"] == 1) | (df["Smoking"] == 1), "secondary_indicator"] = 1
 
 
+    # CAIDE Based on: 
+        # “Risk score for the prediction of dementia risk in 20 years among middle aged people: a longitudinal, population-based study - The Lancet Neurology.” Accessed: Oct. 18, 2026. [Online]. Available: https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(06)70537-3/abstract?isEOP=true
 
+    df["CAIDE"] = 5 #everyone is >53 years old
+
+    # since we have no information about education level, we are going to arbitrarily set the points here
+    df.loc[df["EducationLevel"] <= 1, "CAIDE"] += 4
+    df.loc[df["EducationLevel"] == 2, "CAIDE"] += 3
+
+    df.loc[df["Gender"] == 0, "CAIDE"] += 1
+    df.loc[df["SystolicBP"] > 140, "CAIDE"] += 2
+    df.loc[df["cholesterol_mmol_L"] > 6.5, "CAIDE"] += 1
+
+    # min is twice a week, 20 min at least each time, so in total 40min
+    df.loc[df["physical_activity_min"] < 40, "CAIDE"] += 1
+    # In this case CAIDE the more the worse
