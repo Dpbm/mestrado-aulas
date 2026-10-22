@@ -5,8 +5,9 @@ This file, holds each model by category in order
 to allow us easily retrieve the models as we wish.
 """
 
-from typing import Dict,Any
+from typing import Dict,Any,Tuple,Callable,List
 from functools import partial
+from itertools import product
 from multiprocessing import Pool, Manager
 
 from sklearn.linear_model import LogisticRegression
@@ -20,11 +21,18 @@ from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
 import lightgbm as lgb
 
+import numpy as np
 import pandas as pd
+from tqdm import tqdm
 
-from constants import RANDOM_STATE
+from constants import RANDOM_STATE, TEST_SPLIT
 from format_data import (
-    load_and_format_dataset
+    load_and_format_dataset,
+    get_dataset_target,
+    augment_data,
+    get_dataset_raw_columns,
+    get_dataset_CAIDE_columns,
+    get_dataset_feature_engineered_columns
 )
 
 """
@@ -49,11 +57,9 @@ from format_data import (
     so 12 experiments, across 16 models
 """
 
-keys_amounts = {"baseline":3, "boosting":4, "forest":1, "bagging":3, "stacking":5}
-
-def get_models_by_key(key:str) -> Dict[str,Any]:
+def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
     """
-    Get the models obj by its class key
+    Get the models dict, the amount of models and the key paths in the dictionary
     """
 
     models = {
@@ -93,36 +99,102 @@ def get_models_by_key(key:str) -> Dict[str,Any]:
         }
     }
 
-    return models[key]
+    key_paths = []
+    for k1 in models.keys():
+        for k2 in models[k1].keys():
+            key_paths.append(f'{k1}_{k2}')
 
-def run_default_model(dataset:pd.DataFrame, class_key:str, model_i:int):
+    TOTAL_MODELS = 16
+    return models,TOTAL_MODELS,key_paths
+
+def get_model_by_key(key:str) -> Any:
     """
-    run a single model with default hyperparameters
+    Resolve the key path and return the model
     """
 
+    models, _, _ = get_models()
+
+    key_split = key.split('_')
+    k1,k2 = key_split[0],key_split[1]
+
+    return models[k1][k2]
 
 
-def hold_out_dataset(dataset:pd.DataFrame, test_size:float=0.2) -> :
+Splits = Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]
+def hold_out_dataset(X:pd.DataFrame, y:pd.Series, test_size:float=TEST_SPLIT) -> Splits:
     """
     Split the dataset into train and test.
     """
+    return train_test_split(X, y, test_size=test_size, random_state=RANDOM_STATE, stratify=y)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=RANDOM_STATE)
+def setup_data(columns_func:Callable, test_size:float=TEST_SPLIT) -> Dict[str, Splits]:
+    """
+    Setup dataset
+
+    it loads, format, normalize and split the data as we need
+    for training the models. Both augmented and not augmented.
+    """
+
+    df = load_and_format_dataset()
+    y = get_dataset_target(df)
+    X = columns_func(df)
+
+    not_augmented = hold_out_dataset(X,y, test_size=test_size)
+
+    augmented_X, augmented_y = augment_data(X,y)
+    augmented = hold_out_dataset(augmented_X, augmented_y, test_size=test_size)
+
+    return {"not_augmented":not_augmented, "augmented":augmented}
+
+def run_model(data):
+    task,dataset = data
+
+    data_type, type_of_model, experiment_name, model_key_path = task
+    
+    X_train,X_test,y_train,y_test = dataset.augmented \
+                                        if data_type == "augmented" \
+                                        else \
+                                        dataset.not_augmented
+    model = get_model_by_key(model_key_path)
 
 
 
-def run_default_models(dataset:pd.DataFrame, key:str):
+def run_default_models():
     """
     Run default models based on a models dict key.
     """
 
-    amount_of_models = keys_amounts[key]
+    _,total_models,keys = get_models()
+
+    for name,cols_func in tqdm(
+                zip(
+                    ('raw', 'ours', 'CAIDE'),
+                    (get_dataset_raw_columns, get_dataset_feature_engineered_columns, get_dataset_CAIDE_columns)
+                )):
+
+        data = setup_data(cols_func)
+
+        with Manager() as mg:
+            dataset = mg.Namespace()
+            dataset.not_augmented = data["not_augmented"]
+            dataset.augmented = data["augmented"]
+
+            # *2 because we are going to run both augmented and not augmented at once
+            with Pool(processes=total_models*2) as pool:
+                tasks = list(
+                    product(
+                        ['augmented', 'not_augmented'], 
+                        ['default'], 
+                        [name],
+                        keys)
+                )
+
+                pool.map(run_model, [ (task, dataset) for task in tasks])
 
 
-    with Pool(processes=amount_of_models) as pool:
 
-
-
+if __name__ == "__main__":
+    run_default_models()
 
 
 

@@ -3,16 +3,19 @@ Code used across multiple notebooks.
 """
 
 import os
+from pathlib import Path
 
 RANDOM_STATE = 42
+TEST_SPLIT = 0.2
 
 DATASET_HANDLE = 'alzheimers-disease-risk-prediction-eu-business'
 
 # just to ensure that the dataset/ folder will always exist
 os.makedirs("dataset", exist_ok=True)
 
-DATASET_TRAIN_FILE = os.path.join("dataset", "train.csv")
-DATASET_EVAL_FILE = os.path.join("dataset", "comp.csv")
+current_file = Path(__file__).resolve().parent
+DATASET_TRAIN_FILE = os.path.join(current_file, "dataset", "train.csv")
+DATASET_EVAL_FILE = os.path.join(current_file, "dataset", "comp.csv")
 
 PLOTS_PATH = lambda img_file : os.path.join(".", "plots", img_file)
 

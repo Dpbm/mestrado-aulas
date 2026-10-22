@@ -1484,6 +1484,7 @@ dependencies = [
     { name = "plotly", extra = ["express"] },
     { name = "scikit-learn" },
     { name = "seaborn" },
+    { name = "tqdm" },
     { name = "xgboost" },
 ]
 
@@ -1500,6 +1501,7 @@ requires-dist = [
     { name = "plotly", extras = ["express"], specifier = ">=7.1.0" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "seaborn", specifier = ">=0.13.2" },
+    { name = "tqdm", specifier = ">=4.70.1" },
     { name = "xgboost", specifier = ">=3.4.1" },
 ]
 

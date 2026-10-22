@@ -2,17 +2,21 @@
 Utilities for formating the dataset and applying the things we need.
 """
 
+from typing import Tuple
 import os
 import shutil
 
 import pandas as pd
-
 import kagglehub
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from sklearn.compose import ColumnTransformer
+from imblearn.over_sampling import SMOTE
 
 from constants import (
+    RANDOM_STATE,
     DATASET_HANDLE,
     DATASET_EVAL_FILE,
-    DATASET_TRAIN_FILE
+    DATASET_TRAIN_FILE,
     TARGET, 
     RAW_COLUMNS, 
     OURS_COLUMNS, 
@@ -102,18 +106,46 @@ def format_columns(df:pd.DataFrame):
     df.loc[df["physical_activity_min"] < 40, "CAIDE"] += 1
     # In this case CAIDE the more the worse
 
+def normalize_data(dataset:pd.DataFrame) -> pd.DataFrame:
+    """
+    Pipeline for preprocessing the data
+    """
+
+    column_trans = ColumnTransformer([
+        ("min_max_scaling", MinMaxScaler(), [
+            'Age', 'EducationLevel', 
+            "health_points", "secondary_indicator",
+            "CAIDE", "BMI_cat"
+        ]),
+        ("remaining", StandardScaler(),[
+            "BMI", "AlcoholConsumption", 'PhysicalActivity', 'DietQuality',
+            'SleepQuality', 'SystolicBP', 'DiastolicBP', 'CholesterolTotal', 
+            'CholesterolLDL', 'CholesterolHDL', 'CholesterolTriglycerides', 
+            'MMSE', 'FunctionalAssessment', 'ADL',  'T/HDL'
+        ])
+    ],
+    remainder="passthrough",
+    verbose_feature_names_out=False)
+
+    column_trans.set_output(transform="pandas")
+
+    return column_trans.fit_transform(dataset)
+
+
+
 def load_and_format_dataset() -> pd.DataFrame:
     """
     Load dataset from kaggle and format columns.
     """
     if not os.path.exists(DATASET_TRAIN_FILE):
         print("[i] Downloading competition data...")
-        comp_path = kagglehub.competition_download(DATASET_HANDLE)
+        comp_path = kagglehub.competition_download(DATASET_HANDLE, force_download=True)
         shutil.move(os.path.join(comp_path, "train.csv"), DATASET_TRAIN_FILE)
-        shutil.move(os.path.join(comp_path, "test.csv"), DATASET_TEST_FILE)
+        shutil.move(os.path.join(comp_path, "test.csv"), DATASET_EVAL_FILE)
     
     csv_data = pd.read_csv(DATASET_TRAIN_FILE)
     format_columns(csv_data)
+    csv_data = normalize_data(csv_data)
     return csv_data
 
 def get_dataset_target(dataset:pd.DataFrame) -> pd.Series:
@@ -123,7 +155,13 @@ def get_dataset_target(dataset:pd.DataFrame) -> pd.Series:
     """
     return dataset[TARGET]
 
-def augment_data(X:pd.DataFrame, y:pd.Series) -> 
+def augment_data(X:pd.DataFrame, y:pd.Series) -> Tuple[pd.DataFrame, pd.Series]:
+    """
+    Augment data using SMOTE
+    """
+    sm = SMOTE(random_state=RANDOM_STATE)
+    return sm.fit_resample(X,y)
+
 
 def get_dataset_raw_columns(dataset:pd.DataFrame) -> pd.DataFrame:
     """
