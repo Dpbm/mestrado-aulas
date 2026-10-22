@@ -2,21 +2,35 @@
 Utilities for formating the dataset and applying the things we need.
 """
 
+import os
+import shutil
+
 import pandas as pd
+
+import kagglehub
+
+from constants import (
+    DATASET_HANDLE,
+    DATASET_EVAL_FILE,
+    DATASET_TRAIN_FILE
+    TARGET, 
+    RAW_COLUMNS, 
+    OURS_COLUMNS, 
+    CAIDE_COLUMNS,
+)
 
 def format_columns(df:pd.DataFrame):
     """
     Format columns and data from the given dataset.
 
-    Meant to be used for both training and test CSV.
-    """
+    Meant to be used for both training and test CSV.  """
     
     # from table extracted from: https://media.geeksforgeeks.org/wp-content/uploads/20231206171725/BMI-2.png
     # original article at: https://www.geeksforgeeks.org/utilities/bmi-calculator/
-    df["BMI_cat"] = "Underweight"
-    df.loc[(df["BMI"] >= 18.5)&(df["BMI"] < 25), "BMI_cat"] = "Normal"
-    df.loc[(df["BMI"] >= 25)&(df["BMI"] < 30), "BMI_cat"] = "Overweight"
-    df.loc[df["BMI"] >= 30, "BMI_cat"] = "Obese"
+    df["BMI_cat"] = 0 #"Underweight"
+    df.loc[(df["BMI"] >= 18.5)&(df["BMI"] < 25), "BMI_cat"] = 1 #"Normal"
+    df.loc[(df["BMI"] >= 25)&(df["BMI"] < 30), "BMI_cat"] = 2 #"Overweight"
+    df.loc[df["BMI"] >= 30, "BMI_cat"] = 3 #"Obese"
 
     # given that the dataset is from EU, based on https://mindrink.me/alcohol-unit-calculator/
     # an alcohol unit is approximatelly 8g
@@ -87,3 +101,45 @@ def format_columns(df:pd.DataFrame):
     # min is twice a week, 20 min at least each time, so in total 40min
     df.loc[df["physical_activity_min"] < 40, "CAIDE"] += 1
     # In this case CAIDE the more the worse
+
+def load_and_format_dataset() -> pd.DataFrame:
+    """
+    Load dataset from kaggle and format columns.
+    """
+    if not os.path.exists(DATASET_TRAIN_FILE):
+        print("[i] Downloading competition data...")
+        comp_path = kagglehub.competition_download(DATASET_HANDLE)
+        shutil.move(os.path.join(comp_path, "train.csv"), DATASET_TRAIN_FILE)
+        shutil.move(os.path.join(comp_path, "test.csv"), DATASET_TEST_FILE)
+    
+    csv_data = pd.read_csv(DATASET_TRAIN_FILE)
+    format_columns(csv_data)
+    return csv_data
+
+def get_dataset_target(dataset:pd.DataFrame) -> pd.Series:
+    """
+    Get from within the dataset, only the corresponding
+    target column
+    """
+    return dataset[TARGET]
+
+def augment_data(X:pd.DataFrame, y:pd.Series) -> 
+
+def get_dataset_raw_columns(dataset:pd.DataFrame) -> pd.DataFrame:
+    """
+    Get subdataset based on raw columns data
+    """
+    return dataset[RAW_COLUMNS]
+
+def get_dataset_feature_engineered_columns(dataset:pd.DataFrame) -> pd.DataFrame:
+    """
+    Get subdataset based on ours feature engineered columns
+    """
+    return dataset[OURS_COLUMNS]
+
+def get_dataset_CAIDE_columns(dataset:pd.DataFrame) -> pd.DataFrame:
+    """
+    Get subdataset based on raw-CAIDE columns data
+    """
+    return dataset[CAIDE_COLUMNS]
+
