@@ -6,18 +6,23 @@ import os
 from pathlib import Path
 
 RANDOM_STATE = 42
-TEST_SPLIT = 0.2
 
 DATASET_HANDLE = 'alzheimers-disease-risk-prediction-eu-business'
 
-# just to ensure that the dataset/ folder will always exist
-os.makedirs("dataset", exist_ok=True)
-
 current_file = Path(__file__).resolve().parent
+
+OUTPUTS_PATH = os.path.join(current_file, 'outputs')
+DATASET_PATH = os.path.join(current_file,"dataset") 
+
+# just to ensure that the dataset/ and outputs/ folders will always exist
+os.makedirs(DATASET_PATH, exist_ok=True)
+os.makedirs(OUTPUTS_PATH, exist_ok=True)
+
 DATASET_TRAIN_FILE = os.path.join(current_file, "dataset", "train.csv")
 DATASET_EVAL_FILE = os.path.join(current_file, "dataset", "comp.csv")
 
-PLOTS_PATH = lambda img_file : os.path.join(".", "plots", img_file)
+
+PLOTS_PATH = lambda img_file : os.path.join(current_file, "plots", img_file)
 
 
 TARGET = "Diagnosis"
