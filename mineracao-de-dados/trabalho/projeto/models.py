@@ -22,14 +22,13 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier, BaggingClassifier, StackingClassifier
 
 from sklearn.model_selection import train_test_split,cross_validate,GridSearchCV
-from sklearn.metrics import get_scorer
+from sklearn.metrics import get_scorer, confusion_matrix
 
 from xgboost import XGBClassifier
 
 import shap
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 from constants import (
@@ -94,21 +93,18 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
         "baseline":{
             "logistic-regression": {
                 "model":partial(LogisticRegression,random_state=RANDOM_STATE),
-                "explainer": partial(shap.LinearExplainer, seed=RANDOM_STATE),
                 "params":{
                     "penalty": [None, 'l1', 'l2', 'elasticnet'],
                 }
             },
             "svm-classifier": {
                 "model":partial(SVC, random_state=RANDOM_STATE),
-                "explainer":partial(shap.KernelExplainer, seed=RANDOM_STATE),
                 "params":{
                     "kernel":['rbf', 'linear', 'poly', 'sigmoid']
                 }
             },
             "decision-tree": {
                 "model":partial(DecisionTreeClassifier,random_state=RANDOM_STATE),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE),
                 'params':{
                     'criterion': ['gini','entropy', 'log_loss'],
                     'max_depth': [None, 3, 5, 10, 50],
@@ -118,8 +114,7 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
         },
         "boosting":{
             "xgboost": {
-                "model":partial(XGBClassifier,random_state=RANDOM_STATE, device="cuda"),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE),
+                "model":partial(XGBClassifier,random_state=RANDOM_STATE),
                 'params':{
                     'eta':[0.1, 0.3, 0.5, 0.7],
                     'gamma': [0, 0.1, 0.5, 1],
@@ -128,7 +123,6 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
             },
             "adaboost":{
                 "model":partial(AdaBoostClassifier,random_state=RANDOM_STATE),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE),
                 'params': {
                     'n_estimators': [30, 50, 70],
                     'learning_rate': [0.5, 0.8, 1]
@@ -138,7 +132,6 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
         "forest":{
             "random": {
                 "model":partial(RandomForestClassifier,random_state=RANDOM_STATE),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE),
                 "params":{
                     'criterion': ['gini','entropy', 'log_loss'],
                     'max_depth': [None, 3, 5, 10, 50],
@@ -150,21 +143,18 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
         "bagging":{
             "tree": {
                 "model":partial(BaggingClassifier, estimator=DecisionTreeClassifier(random_state=RANDOM_STATE), random_state=RANDOM_STATE),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE),
                 'params':{
                     'n_estimators':[5, 10, 20, 30],
                 }
             },
             "logistic": {
                 "model":partial(BaggingClassifier, estimator=LogisticRegression(random_state=RANDOM_STATE), random_state=RANDOM_STATE),
-                "explainer":partial(shap.LinearExplainer, seed=RANDOM_STATE),
                 'params':{
                     'n_estimators':[5, 10, 20, 30],
                 }
             },
             "svm": {
                 "model":partial(BaggingClassifier, estimator=SVC(random_state=RANDOM_STATE), random_state=RANDOM_STATE),
-                "explainer":partial(shap.KernelExplainer, seed=RANDOM_STATE),
                 'params':{
                     'n_estimators':[5, 10, 20, 30],
                 }
@@ -177,7 +167,9 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
                     estimators=[('forest',RandomForestClassifier(random_state=RANDOM_STATE))],
                     cv=CV_FOLDS
                 ),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE)
+                'params':{
+                    'stack_method':['auto','predict_proba','decision_function','predict']
+                }
             },
             "logistic": {
                 "model":partial(
@@ -185,7 +177,9 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
                     estimators=[('logistic',LogisticRegression(random_state=RANDOM_STATE))],
                     cv=CV_FOLDS
                 ),
-                "explainer":partial(shap.LinearExplainer, seed=RANDOM_STATE)
+                'params':{
+                    'stack_method':['auto','predict_proba','decision_function','predict']
+                }
             },
             "svm": {
                 "model":partial(
@@ -193,7 +187,9 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
                     estimators=[('svm',SVC(random_state=RANDOM_STATE))],
                     cv=CV_FOLDS
                 ),
-                "explainer":partial(shap.KernelExplainer, seed=RANDOM_STATE)
+                'params':{
+                    'stack_method':['auto','predict_proba','decision_function','predict']
+                }
             },
             "tree": {
                 "model":partial(
@@ -201,7 +197,9 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
                     estimators=[('tree',DecisionTreeClassifier(random_state=RANDOM_STATE))],
                     cv=CV_FOLDS
                 ),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE)
+                'params':{
+                    'stack_method':['auto','predict_proba','decision_function','predict']
+                }
             },
             "all": {
                 "model":partial(
@@ -214,7 +212,9 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
                     ],
                     cv=CV_FOLDS
                 ),
-                "explainer":partial(shap.TreeExplainer, seed=RANDOM_STATE)
+                'params':{
+                    'stack_method':['auto','predict_proba','decision_function','predict']
+                }
             },
         }
     }
@@ -301,6 +301,7 @@ def save_test_metrics(
             scorer = get_scorer(scoring_method)._score_func
             score = scorer(y_test,y_pred)
             test_metrics[scoring_method] = score
+        test_metrics['confusion_matrix'] = confusion_matrix(y_test, y_pred, labels=['0', '1']).tolist()
         json.dump(test_metrics,file)
 
 def save_tree(
@@ -329,29 +330,18 @@ def save_tree(
 
 def explain_model(
     model:Any,
-    explainer:Any,
     X_train:np.ndarray,
+    X_test:np.ndarray,
     cols:List[str],
     path:str
 ):
     """
     Use Shap to explain the importante of each feature
     """
-
-    exp = None 
-    try:
-        exp = explainer(model, X_train, feature_names=cols)
-    except TypeError:
-        # for errors like:
-        # TypeError: The passed model is not callable and cannot be analyzed directly with the given masker! Model: SVC()
-
-        # https://stackoverflow.com/questions/71117308/exception-the-passed-model-is-not-callable-and-cannot-be-analyzed-directly-with
-        # https://github.com/shap/shap/issues/2399
-        exp = explainer(model.predict, X_train, feature_names=cols)
-        
-    shap_values = explainer(X_test)
-    shap_df = pd.DataFrame(shap_values.values, columns=cols)
-    shap_df.to_csv(path, index=False)
+    sample = shap.kmeans(X_train,50)
+    exp = shap.TreeExplainer(model,feature_names=cols)
+    shap_values = exp(X_test)
+    np.save(path,shap_values)
 
 def export_model(model:Any, path:str):
     """
@@ -361,24 +351,28 @@ def export_model(model:Any, path:str):
     with open(path, "wb") as file:
         dump(model, file, protocol=5) 
 
-
-
-def run_model(
-    model:Any, 
-    explainer:Any,
-    cols:List[str],
-    target_folder_path:str,
-    X_train:np.ndarray, 
-    X_test:np.ndarray, 
-    y_train:np.ndarray, 
-    y_test:np.ndarray
-):
+def run_default_model(data:Tuple[Any,Any]):
     """
-    Run a single model and extract metrics and 
-    other statistics.
-
-    For training, it uses Cross validation.
+    Run default models.
     """
+    task,dataset = data
+    data_type, type_of_model, experiment_name, model_key_path = task
+    
+    X_train,X_test,y_train,y_test = dataset.augmented \
+                                        if data_type == "augmented" \
+                                        else \
+                                        dataset.not_augmented
+
+    # get the partial and instantiate the object
+    model_data = get_model_by_key(model_key_path)
+    model = model_data['model']()
+    cols = dataset.cols
+
+    target_folder_path = os.path.join(OUTPUTS_PATH, data_type, type_of_model, experiment_name, model_key_path)
+    if os.path.exists(target_folder_path):
+        shutil.rmtree(target_folder_path, ignore_errors=True)
+    os.makedirs(target_folder_path, exist_ok=True)
+
     start_time_cv = time.perf_counter()
     cv_results = cross_validate(
         model,
@@ -388,8 +382,7 @@ def run_model(
         cv=CV_FOLDS,
         return_train_score=True,
         return_estimator=True,
-        return_indices=True,
-        )
+    )
     end_time_cv = time.perf_counter()
 
     model_best_precision = int(np.argmax(cv_results['test_precision']))
@@ -401,9 +394,8 @@ def run_model(
     
     np.save(os.path.join(target_folder_path,'y_pred.npy'), y_pred)
 
-    df_cv = pd.DataFrame(cv_results[[key for key in cv_results.keys() if key != 'estimator']])
+    df_cv = pd.DataFrame({key:cv_results[key] for key in cv_results.keys() if key != 'estimator'})
     df_cv.to_csv(os.path.join(target_folder_path, 'output_cv_train.csv'), index=False)
-
 
     save_time(
         start_time_cv, 
@@ -418,23 +410,25 @@ def run_model(
         os.path.join(target_folder_path, 'output_test_metrics.json')
     ) 
 
-    if 'tree' in model_key_path or 'forest' in model_key_path:
-        selected_tree = model if 'decision-tree' in model_key_path else model.estimators_[0]
-        title =  f"{model_key_path.replace('_',' ')} - {data_type} - {type_of_model} model - {experiment_name} dataset columns"
+    if 'decision-tree' in model_key_path:
+        # we limited the shap usage for decision-trees only because 
+        # it's time consuming and we only need to understand it overall, not
+        # every single diference
+        explain_model(
+            model,
+            X_train,
+            X_test,
+            cols,
+            os.path.join(target_folder_path, 'shap_values.npy')
+        )
+        
+        title =  f"Decision Tree - {data_type} - {type_of_model} model - {experiment_name} dataset columns"
         save_tree(
-            selected_tree,
+            model,
             cols,
             title,
             os.path.join(target_folder_path, 'tree.png')
         )
-    
-    explain_model(
-        model,
-        explainer, 
-        X_train,
-        cols,
-        os.path.join(target_folder_path, 'shap_values.csv')
-    )
 
     export_model(
         model,
@@ -442,40 +436,10 @@ def run_model(
     )
 
 
-def run_default_models(data:Tuple[Any,Any]):
-    """
-    Run default models based on a mod.
-    """
-    task,dataset = data
-    data_type, type_of_model, experiment_name, model_key_path = task
-    
-    X_train,X_test,y_train,y_test = dataset.augmented \
-                                        if data_type == "augmented" \
-                                        else \
-                                        dataset.not_augmented
 
-    # get the partial and instantiate the object
-    model_data = get_model_by_key(model_key_path)
-    model = model_data['model']()
-    explainer = model_data['explainer']()
 
-    target_folder_path = os.path.join(OUTPUTS_PATH, data_type, type_of_model, experiment_name, model_key_path)
-    if os.path.exists(target_folder_path):
-        shutil.rmtree(target_folder_path, ignore_errors=True)
-    os.makedirs(target_folder_path, exist_ok=True)
 
-    run_model(
-        model,
-        explainer,
-        dataset.cols,
-        target_folder_path,
-        X_train,
-        X_test,
-        y_train,
-        y_test
-    )
-
-def run_best_params(data:Any):
+def run_best_params_model(data:Tuple[Any,Any]):
     """
     Search for each model best set of params
     and then evaluate metrics
@@ -491,7 +455,6 @@ def run_best_params(data:Any):
     # get the partial and instantiate the object
     model_data = get_model_by_key(model_key_path)
     model = model_data['model']()
-    explainer = model_data['explainer']()
 
     search_cv = GridSearchCV(
         model,
@@ -499,7 +462,7 @@ def run_best_params(data:Any):
         scoring=CV_SCORING,
         param_grid=model_data['params'],
         return_train_score=True,
-        refit=True
+        refit='precision'
     )
 
     start_time_cv = time.perf_counter()
@@ -535,24 +498,22 @@ def run_best_params(data:Any):
         os.path.join(target_folder_path, 'output_test_metrics.json')
     )
 
-    if 'tree' in model_key_path or 'forest' in model_key_path:
-        selected_tree = model if 'decision-tree' in model_key_path else model.estimators_[0]
-        title = f"{model_key_path.replace('_',' ')} - {data_type} - {type_of_model} model - {experiment_name} dataset columns"
+    if 'decision-tree' in model_key_path:
+        explain_model(
+            model,
+            X_train,
+            X_test,
+            cols,
+            os.path.join(target_folder_path, 'shap_values.npy')
+        )
+        
+        title = f"Decision Tree - {data_type} - {type_of_model} model - {experiment_name} dataset columns"
         save_tree(
-            selected_tree,
+            model,
             cols,
             title,
             os.path.join(target_folder_path, 'tree.png')
         )
-
-    explain_model(
-        model,
-        explainer, 
-        X_train,
-        cols,
-        os.path.join(target_folder_path, 'shap_values.csv')
-
-    )
 
     export_model(
         model,
@@ -567,12 +528,13 @@ def run_all():
         ('default', 'best-params'),
         (run_default_model, run_best_params_model)
         ):
-        for name,cols,cols_func in tqdm(
-                    zip(
+        for name,cols,cols_func in zip(
                         ('raw', 'ours', 'CAIDE'),
                         (RAW_COLUMNS, OURS_COLUMNS, CAIDE_COLUMNS),
                         (get_dataset_raw_columns, get_dataset_feature_engineered_columns, get_dataset_CAIDE_columns)
-                    )):
+                    ):
+            
+            print(f"[i] Doing {experiment_type} - {name}")
 
             data = setup_data(cols_func)
             with Manager() as mg:
@@ -580,13 +542,16 @@ def run_all():
                 dataset.not_augmented = data["not_augmented"]
                 dataset.augmented = data["augmented"]
                 dataset.cols = cols
-                
+
                 # save the modified datasets for later analysis
                 for t in ['augmented', 'not_augmented']:
-                    np.save(os.path.join(OUTPUTS_PATH, t, experiment_type, name, f'{t}_x_train.npy'), data[t][0])
-                    np.save(os.path.join(OUTPUTS_PATH, t, experiment_type, name, f'{t}_x_test.npy'), data[t][1])
-                    np.save(os.path.join(OUTPUTS_PATH, t, experiment_type, name, f'{t}_y_train.npy'), data[t][2])
-                    np.save(os.path.join(OUTPUTS_PATH, t, experiment_type, name, f'{t}_y_test.npy'), data[t][3])
+                    base_data_path = os.path.join(OUTPUTS_PATH, t, experiment_type, name)
+                    os.makedirs(base_data_path, exist_ok=True)
+
+                    np.save(os.path.join(base_data_path, 'x_train.npy'), data[t][0])
+                    np.save(os.path.join(base_data_path, 'x_test.npy'), data[t][1])
+                    np.save(os.path.join(base_data_path, 'y_train.npy'), data[t][2])
+                    np.save(os.path.join(base_data_path, 'y_test.npy'), data[t][3])
 
                 # *2 because we are going to run both augmented and not augmented at once
                 with Pool(processes=total_models*2) as pool:
