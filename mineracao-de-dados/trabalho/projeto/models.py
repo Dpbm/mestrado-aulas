@@ -25,8 +25,6 @@ from sklearn.model_selection import train_test_split,cross_validate,GridSearchCV
 from sklearn.metrics import get_scorer
 
 from xgboost import XGBClassifier
-from catboost import CatBoostClassifier
-from lightgbm import LGBMClassifier
 
 import shap
 import numpy as np
