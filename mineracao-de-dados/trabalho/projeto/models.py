@@ -302,7 +302,7 @@ def save_test_metrics(
             scorer = get_scorer(scoring_method)._score_func
             score = scorer(y_test,y_pred)
             test_metrics[scoring_method] = score
-        test_metrics['confusion_matrix'] = confusion_matrix(y_test, y_pred, labels=['0', '1']).tolist()
+        test_metrics['confusion_matrix'] = confusion_matrix(y_test, y_pred, labels=[0, 1]).tolist()
         json.dump(test_metrics,file)
 
 def save_tree(
