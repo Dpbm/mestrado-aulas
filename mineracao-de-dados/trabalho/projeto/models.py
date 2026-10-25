@@ -257,6 +257,7 @@ def setup_data(columns_func:Callable, test_size:float=TEST_SPLIT) -> Dict[str, S
     """
 
     df = load_and_format_dataset()
+    df = df.drop_duplicates()
     y = get_dataset_target(df)
     X = columns_func(df)
 
@@ -446,6 +447,7 @@ def run_best_params_model(data:Tuple[Any,Any]):
     """
     task,dataset = data
     data_type, type_of_model, experiment_name, model_key_path = task
+    cols = dataset.cols
     
     X_train,X_test,y_train,y_test = dataset.augmented \
                                         if data_type == "augmented" \
@@ -474,7 +476,7 @@ def run_best_params_model(data:Tuple[Any,Any]):
         shutil.rmtree(target_folder_path, ignore_errors=True)
     os.makedirs(target_folder_path, exist_ok=True)
 
-    df = pd.DataFarme(search_cv.cv_results_)
+    df = pd.DataFrame(search_cv.cv_results_)
     df.to_csv(os.path.join(target_folder_path, f'grid_search_output.csv'), index=False)
 
     best_model = search_cv.best_estimator_
@@ -500,7 +502,7 @@ def run_best_params_model(data:Tuple[Any,Any]):
 
     if 'decision-tree' in model_key_path:
         explain_model(
-            model,
+            best_model,
             X_train,
             X_test,
             cols,
@@ -509,14 +511,14 @@ def run_best_params_model(data:Tuple[Any,Any]):
         
         title = f"Decision Tree - {data_type} - {type_of_model} model - {experiment_name} dataset columns"
         save_tree(
-            model,
+            best_model,
             cols,
             title,
             os.path.join(target_folder_path, 'tree.png')
         )
 
     export_model(
-        model,
+        best_model,
         os.path.join(target_folder_path,"model.pkl")
     )
 
