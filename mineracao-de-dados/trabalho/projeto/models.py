@@ -386,8 +386,8 @@ def run_default_model(data:Tuple[Any,Any]):
     )
     end_time_cv = time.perf_counter()
 
-    model_best_precision = int(np.argmax(cv_results['test_precision']))
-    model = cv_results["estimator"][model_best_precision]
+    model_best_f1 = int(np.argmax(cv_results['test_f1']))
+    model = cv_results["estimator"][model_best_f1]
     
     start_time_inference = time.perf_counter()
     y_pred = model.predict(X_test)
@@ -464,7 +464,7 @@ def run_best_params_model(data:Tuple[Any,Any]):
         scoring=CV_SCORING,
         param_grid=model_data['params'],
         return_train_score=True,
-        refit='precision'
+        refit='f1'
     )
 
     start_time_cv = time.perf_counter()
