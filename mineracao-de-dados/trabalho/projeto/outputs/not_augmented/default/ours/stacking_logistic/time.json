@@ -1,1 +1,1 @@
-{"start_train": 16555.173635412, "end_train": 16566.93187419, "elapsed_time": 11.758238777998486, "start_inference": 16566.931896865, "end_inference": 16566.948781775, "elapsed_time_inference": 0.016884910000953823}
+{"start_train": 192.008902105, "end_train": 202.595465528, "elapsed_time": 10.586563423000001, "start_inference": 202.595485988, "end_inference": 202.596973167, "elapsed_time_inference": 0.0014871789999801877}
