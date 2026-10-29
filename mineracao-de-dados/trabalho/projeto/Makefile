@@ -7,3 +7,6 @@ analysis:
 
 model:
 	source key-setup.sh && uv run models.py
+
+comp:
+	uv run predict_kaggle.py

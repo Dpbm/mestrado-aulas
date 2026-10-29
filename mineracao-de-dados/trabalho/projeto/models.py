@@ -15,6 +15,7 @@ from joblib import dump
 from functools import partial
 from itertools import product
 from multiprocessing import Pool, Manager
+from pathlib import Path
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -22,7 +23,7 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier, BaggingClassifier, StackingClassifier
 
 from sklearn.model_selection import train_test_split,cross_validate,GridSearchCV
-from sklearn.metrics import get_scorer, confusion_matrix
+from sklearn.metrics import get_scorer, confusion_matrix, RocCurveDisplay
 
 from xgboost import XGBClassifier
 
@@ -344,6 +345,11 @@ def explain_model(
     shap_values = exp(X_test)
     np.save(path,shap_values)
 
+    shap.plots.beeswarm(shap_values, show=False)
+    plt.savefig(os.path.join(Path(path).parent, "shap_plot.png"), dpi=300, bbox_inches="tight")
+    plt.clf()
+
+
 def export_model(model:Any, path:str):
     """
     Save model to pickle
@@ -383,6 +389,7 @@ def run_default_model(data:Tuple[Any,Any]):
         cv=CV_FOLDS,
         return_train_score=True,
         return_estimator=True,
+        return_indices=True
     )
     end_time_cv = time.perf_counter()
 
@@ -395,8 +402,16 @@ def run_default_model(data:Tuple[Any,Any]):
     
     np.save(os.path.join(target_folder_path,'y_pred.npy'), y_pred)
 
-    df_cv = pd.DataFrame({key:cv_results[key] for key in cv_results.keys() if key != 'estimator'})
+    df_cv = pd.DataFrame({key:cv_results[key] for key in cv_results.keys() if key not in ['estimator', 'indices']})
     df_cv.to_csv(os.path.join(target_folder_path, 'output_cv_train.csv'), index=False)
+
+    RocCurveDisplay.from_cv_results(cv_results, X_train, y_train, plot_chance_level=True,)
+    plt.savefig(os.path.join(target_folder_path, 'roc_curve_cv.png'), dpi=300, bbox_inches='tight')
+    plt.clf()
+
+    RocCurveDisplay.from_estimator(model, X_test, y_test, plot_chance_level=True,)
+    plt.savefig(os.path.join(target_folder_path, 'roc_curve_model.png'), dpi=300, bbox_inches='tight')
+    plt.clf()
 
     save_time(
         start_time_cv, 
@@ -412,17 +427,6 @@ def run_default_model(data:Tuple[Any,Any]):
     ) 
 
     if 'decision-tree' in model_key_path:
-        # we limited the shap usage for decision-trees only because 
-        # it's time consuming and we only need to understand it overall, not
-        # every single diference
-        explain_model(
-            model,
-            X_train,
-            X_test,
-            cols,
-            os.path.join(target_folder_path, 'shap_values.npy')
-        )
-        
         title =  f"Decision Tree - {data_type} - {type_of_model} model - {experiment_name} dataset columns"
         save_tree(
             model,
@@ -431,13 +435,21 @@ def run_default_model(data:Tuple[Any,Any]):
             os.path.join(target_folder_path, 'tree.png')
         )
 
+    if 'boosting_xgboost' in model_key_path:
+        # we limited the shap usage for xgboost only because 
+        # it's time consuming and we only need to understand it overall
+        explain_model(
+            model,
+            X_train,
+            X_test,
+            cols,
+            os.path.join(target_folder_path, 'shap_values.npy')
+        )
+
     export_model(
         model,
         os.path.join(target_folder_path,"model.pkl")
     )
-
-
-
 
 
 def run_best_params_model(data:Tuple[Any,Any]):
@@ -486,6 +498,14 @@ def run_best_params_model(data:Tuple[Any,Any]):
 
     np.save(os.path.join(target_folder_path,'y_pred.npy'), y_pred)
 
+    RocCurveDisplay.from_cv_results(cv_results, X_train, y_train, plot_chance_level=True)
+    plt.savefig(os.path.join(target_folder_path, 'roc_curve_cv.png'), dpi=300, bbox_inches='tight')
+    plt.clf()
+
+    RocCurveDisplay.from_estimator(model, X_test, y_test, plot_chance_level=True)
+    plt.savefig(os.path.join(target_folder_path, 'roc_curve_model.png'), dpi=300, bbox_inches='tight')
+    plt.clf()
+
     save_time(
         start_time_cv,
         end_time_cv,
@@ -501,20 +521,23 @@ def run_best_params_model(data:Tuple[Any,Any]):
     )
 
     if 'decision-tree' in model_key_path:
-        explain_model(
-            best_model,
-            X_train,
-            X_test,
-            cols,
-            os.path.join(target_folder_path, 'shap_values.npy')
-        )
-        
         title = f"Decision Tree - {data_type} - {type_of_model} model - {experiment_name} dataset columns"
         save_tree(
             best_model,
             cols,
             title,
             os.path.join(target_folder_path, 'tree.png')
+        )
+
+    if 'boosting_xgboost' in model_key_path:
+        # we limited the shap usage for xgboost only because 
+        # it's time consuming and we only need to understand it overall
+        explain_model(
+            model,
+            X_train,
+            X_test,
+            cols,
+            os.path.join(target_folder_path, 'shap_values.npy')
         )
 
     export_model(
