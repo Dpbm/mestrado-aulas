@@ -348,7 +348,7 @@ def explain_model(
     np.save(path,shap_values)
 
     shap.plots.beeswarm(shap_values, show=False)
-    plt.title("Shap Values XGBoost", y=1.75)
+    plt.title("Shap Values XGBoost", y=1.05)
     plt.savefig(os.path.join(Path(path).parent, "shap_plot.png"), dpi=300, bbox_inches="tight")
     plt.clf()
 
@@ -503,12 +503,7 @@ def run_best_params_model(data:Tuple[Any,Any]):
 
     np.save(os.path.join(target_folder_path,'y_pred.npy'), y_pred)
 
-    RocCurveDisplay.from_cv_results(cv_results, X_train, y_train, plot_chance_level=True)
-    plt.title(f"CV Results ROC Curve - {data_type} - {type_of_model} - {experiment_name}")
-    plt.savefig(os.path.join(target_folder_path, 'roc_curve_cv.png'), dpi=300, bbox_inches='tight')
-    plt.clf()
-
-    RocCurveDisplay.from_estimator(model, X_test, y_test, plot_chance_level=True)
+    RocCurveDisplay.from_estimator(best_model, X_test, y_test, plot_chance_level=True)
     plt.title(f"Eval ROC Curve - {data_type} - {type_of_model} - {experiment_name}")
     plt.savefig(os.path.join(target_folder_path, 'roc_curve_model.png'), dpi=300, bbox_inches='tight')
     plt.clf()
@@ -540,7 +535,7 @@ def run_best_params_model(data:Tuple[Any,Any]):
         # we limited the shap usage for xgboost only because 
         # it's time consuming and we only need to understand it overall
         explain_model(
-            model,
+            best_model,
             X_train,
             X_test,
             cols,
