@@ -8,10 +8,10 @@ import os
 import pandas as pd
 
 from format_data import normalize_data, format_columns
-from constants import DATASET_EVAL_FILE, RAW_COLUMNS, OUTPUTS_PATH, DATASET_PATH, CAIDE_COLUMNS, OURS_COLUMNS
+from constants import DATASET_EVAL_FILE, OUTPUTS_PATH, DATASET_PATH, FEATURES_LISTS
 
 if __name__ == "__main__":
-    for columns_name,columns in zip(['raw', 'CAIDE', 'ours'], [RAW_COLUMNS,CAIDE_COLUMNS,OURS_COLUMNS]):
+    for columns_name,columns in FEATURES_LISTS:
         print(f'[i] Using columns: {columns_name} ')
 
         model_file_path = os.path.join(

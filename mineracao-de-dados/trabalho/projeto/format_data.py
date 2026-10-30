@@ -21,6 +21,7 @@ from constants import (
     RAW_COLUMNS, 
     OURS_COLUMNS, 
     CAIDE_COLUMNS,
+    ALL_COLUMNS
 )
 
 def format_columns(df:pd.DataFrame):
@@ -181,3 +182,8 @@ def get_dataset_CAIDE_columns(dataset:pd.DataFrame) -> pd.DataFrame:
     """
     return dataset[CAIDE_COLUMNS]
 
+def get_dataset_ALL_columns(dataset:pd.DataFrame) -> pd.DataFrame:
+    """
+    Get subdataset based on all columns data
+    """
+    return dataset[ALL_COLUMNS]

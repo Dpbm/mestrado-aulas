@@ -38,7 +38,8 @@ from constants import (
     RAW_COLUMNS,
     CAIDE_COLUMNS,
     OURS_COLUMNS,
-    TARGET
+    TARGET,
+    FEATURES_LISTS
 )
 from format_data import (
     load_and_format_dataset,
@@ -46,7 +47,8 @@ from format_data import (
     augment_data,
     get_dataset_raw_columns,
     get_dataset_CAIDE_columns,
-    get_dataset_feature_engineered_columns
+    get_dataset_feature_engineered_columns,
+    get_dataset_ALL_columns
 )
 
 """
@@ -346,6 +348,7 @@ def explain_model(
     np.save(path,shap_values)
 
     shap.plots.beeswarm(shap_values, show=False)
+    plt.title("Shap Values XGBoost", y=1.75)
     plt.savefig(os.path.join(Path(path).parent, "shap_plot.png"), dpi=300, bbox_inches="tight")
     plt.clf()
 
@@ -405,11 +408,13 @@ def run_default_model(data:Tuple[Any,Any]):
     df_cv = pd.DataFrame({key:cv_results[key] for key in cv_results.keys() if key not in ['estimator', 'indices']})
     df_cv.to_csv(os.path.join(target_folder_path, 'output_cv_train.csv'), index=False)
 
-    RocCurveDisplay.from_cv_results(cv_results, X_train, y_train, plot_chance_level=True,)
+    RocCurveDisplay.from_cv_results(cv_results, X_train, y_train, plot_chance_level=True)
+    plt.title(f"CV Results ROC Curve - {data_type} - {type_of_model} - {experiment_name}")
     plt.savefig(os.path.join(target_folder_path, 'roc_curve_cv.png'), dpi=300, bbox_inches='tight')
     plt.clf()
 
-    RocCurveDisplay.from_estimator(model, X_test, y_test, plot_chance_level=True,)
+    RocCurveDisplay.from_estimator(model, X_test, y_test, plot_chance_level=True)
+    plt.title(f"Eval ROC Curve - {data_type} - {type_of_model} - {experiment_name}")
     plt.savefig(os.path.join(target_folder_path, 'roc_curve_model.png'), dpi=300, bbox_inches='tight')
     plt.clf()
 
@@ -499,10 +504,12 @@ def run_best_params_model(data:Tuple[Any,Any]):
     np.save(os.path.join(target_folder_path,'y_pred.npy'), y_pred)
 
     RocCurveDisplay.from_cv_results(cv_results, X_train, y_train, plot_chance_level=True)
+    plt.title(f"CV Results ROC Curve - {data_type} - {type_of_model} - {experiment_name}")
     plt.savefig(os.path.join(target_folder_path, 'roc_curve_cv.png'), dpi=300, bbox_inches='tight')
     plt.clf()
 
     RocCurveDisplay.from_estimator(model, X_test, y_test, plot_chance_level=True)
+    plt.title(f"Eval ROC Curve - {data_type} - {type_of_model} - {experiment_name}")
     plt.savefig(os.path.join(target_folder_path, 'roc_curve_model.png'), dpi=300, bbox_inches='tight')
     plt.clf()
 
@@ -553,10 +560,14 @@ def run_all():
         ('default', 'best-params'),
         (run_default_model, run_best_params_model)
         ):
-        for name,cols,cols_func in zip(
-                        ('raw', 'ours', 'CAIDE'),
-                        (RAW_COLUMNS, OURS_COLUMNS, CAIDE_COLUMNS),
-                        (get_dataset_raw_columns, get_dataset_feature_engineered_columns, get_dataset_CAIDE_columns)
+        for (name,cols),cols_func in zip(
+                        FEATURES_LISTS,
+                        (
+                            get_dataset_raw_columns, 
+                            get_dataset_feature_engineered_columns, 
+                            get_dataset_CAIDE_columns,
+                            get_dataset_ALL_columns
+                        )
                     ):
             
             print(f"[i] Doing {experiment_type} - {name}")

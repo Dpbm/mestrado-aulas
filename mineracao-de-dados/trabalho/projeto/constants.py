@@ -49,3 +49,16 @@ CAIDE_COLUMNS = [
     'Disorientation', 'PersonalityChanges', 'DifficultyCompletingTasks',
     'Forgetfulness',
 ]
+ALL_COLUMNS = [
+    'CAIDE', 'BMI_cat', "T/HDL", "health_points", 
+    "secondary_indicator", 'FamilyHistoryAlzheimers', 'CardiovascularDisease',
+    'Depression', 'HeadInjury', 'Hypertension', 
+    'CholesterolLDL', 'MMSE', 'FunctionalAssessment',
+    'MemoryComplaints', 'BehavioralProblems', 'ADL', 'Confusion',
+    'Disorientation', 'PersonalityChanges', 'DifficultyCompletingTasks',
+    'Forgetfulness',
+]
+
+FEATURES_NAMES = ('raw', 'ours', 'CAIDE', 'all')
+FEATURES_COLUMNS = (RAW_COLUMNS, OURS_COLUMNS, CAIDE_COLUMNS, ALL_COLUMNS)
+FEATURES_LISTS = list(zip(('raw', 'ours', 'CAIDE', 'all'), (RAW_COLUMNS, OURS_COLUMNS, CAIDE_COLUMNS, ALL_COLUMNS)))
