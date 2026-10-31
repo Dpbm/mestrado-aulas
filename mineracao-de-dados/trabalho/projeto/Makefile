@@ -8,5 +8,8 @@ analysis:
 model:
 	source key-setup.sh && uv run models.py
 
+best:
+	source key-setup.sh && uv run models.py --step best
+
 comp:
 	uv run predict_kaggle.py

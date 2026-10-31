@@ -8,7 +8,14 @@ import os
 import pandas as pd
 
 from format_data import normalize_data, format_columns
-from constants import DATASET_EVAL_FILE, OUTPUTS_PATH, DATASET_PATH, FEATURES_LISTS
+from constants import (
+    DATASET_EVAL_FILE, 
+    OUTPUTS_PATH, 
+    DATASET_PATH, 
+    FEATURES_LISTS, 
+    SELECTED_BEST_FEATURES,
+    BEST_PATH
+)
 
 if __name__ == "__main__":
     for columns_name,columns in FEATURES_LISTS:
@@ -38,5 +45,35 @@ if __name__ == "__main__":
             print("[i] saving predictions ...")
             csv_path = os.path.join(DATASET_PATH, f'pred_{columns_name}.csv')
             comp_df[['PatientID', 'Diagnosis']].to_csv(csv_path, index=False)
+
+    print('-'*40)
+    print('[i] Using best features ...')
+    model_file_path = os.path.join(
+        BEST_PATH,
+        'augmented',
+        'default',
+        'best-features',
+        'stacking_forest',
+        'model.pkl'
+    )
+        
+    with open(model_file_path, 'rb') as model_file:
+        print("[i] Loading parts ...")
+        model = load(model_file)
+        comp_df = pd.read_csv(DATASET_EVAL_FILE)
+
+        print('[i] Normalizing data ...')
+        format_columns(comp_df)
+        comp_df = normalize_data(comp_df)
+
+        print("[i] Predicting ...")
+        pred = model.predict(comp_df[SELECTED_BEST_FEATURES])
+        comp_df['Diagnosis'] = pred
+
+        print("[i] saving predictions ...")
+        csv_path = os.path.join(DATASET_PATH, 'pred_best.csv')
+        comp_df[['PatientID', 'Diagnosis']].to_csv(csv_path, index=False)
+
+
 
 

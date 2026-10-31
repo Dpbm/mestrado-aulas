@@ -13,6 +13,7 @@ current_file = Path(__file__).resolve().parent
 
 OUTPUTS_PATH = os.path.join(current_file, 'outputs')
 DATASET_PATH = os.path.join(current_file,"dataset") 
+BEST_PATH = os.path.join(current_file, 'outputs', 'best-features')
 
 # just to ensure that the dataset/ and outputs/ folders will always exist
 os.makedirs(DATASET_PATH, exist_ok=True)
@@ -57,6 +58,14 @@ ALL_COLUMNS = [
     'MemoryComplaints', 'BehavioralProblems', 'ADL', 'Confusion',
     'Disorientation', 'PersonalityChanges', 'DifficultyCompletingTasks',
     'Forgetfulness',
+]
+
+SELECTED_BEST_FEATURES = [
+    "FunctionalAssessment",
+    "ADL",
+    "MemoryComplaints",
+    "MMSE",
+    "BehavioralProblems"
 ]
 
 FEATURES_NAMES = ('raw', 'ours', 'CAIDE', 'all')

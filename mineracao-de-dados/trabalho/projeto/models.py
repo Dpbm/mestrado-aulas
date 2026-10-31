@@ -16,6 +16,7 @@ from functools import partial
 from itertools import product
 from multiprocessing import Pool, Manager
 from pathlib import Path
+import argparse
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -39,7 +40,9 @@ from constants import (
     CAIDE_COLUMNS,
     OURS_COLUMNS,
     TARGET,
-    FEATURES_LISTS
+    FEATURES_LISTS,
+    BEST_PATH,
+    SELECTED_BEST_FEATURES
 )
 from format_data import (
     load_and_format_dataset,
@@ -48,7 +51,8 @@ from format_data import (
     get_dataset_raw_columns,
     get_dataset_CAIDE_columns,
     get_dataset_feature_engineered_columns,
-    get_dataset_ALL_columns
+    get_dataset_ALL_columns,
+    get_dataset_best_columns
 )
 
 """
@@ -361,11 +365,11 @@ def export_model(model:Any, path:str):
     with open(path, "wb") as file:
         dump(model, file, protocol=5) 
 
-def run_default_model(data:Tuple[Any,Any]):
+def run_default_model(data:Tuple[Any,Any,str]):
     """
     Run default models.
     """
-    task,dataset = data
+    task,dataset,base_path = data
     data_type, type_of_model, experiment_name, model_key_path = task
     
     X_train,X_test,y_train,y_test = dataset.augmented \
@@ -378,7 +382,7 @@ def run_default_model(data:Tuple[Any,Any]):
     model = model_data['model']()
     cols = dataset.cols
 
-    target_folder_path = os.path.join(OUTPUTS_PATH, data_type, type_of_model, experiment_name, model_key_path)
+    target_folder_path = os.path.join(base_path, data_type, type_of_model, experiment_name, model_key_path)
     if os.path.exists(target_folder_path):
         shutil.rmtree(target_folder_path, ignore_errors=True)
     os.makedirs(target_folder_path, exist_ok=True)
@@ -457,12 +461,12 @@ def run_default_model(data:Tuple[Any,Any]):
     )
 
 
-def run_best_params_model(data:Tuple[Any,Any]):
+def run_best_params_model(data:Tuple[Any,Any,str]):
     """
     Search for each model best set of params
     and then evaluate metrics
     """
-    task,dataset = data
+    task,dataset,base_path = data
     data_type, type_of_model, experiment_name, model_key_path = task
     cols = dataset.cols
     
@@ -488,7 +492,7 @@ def run_best_params_model(data:Tuple[Any,Any]):
     search_cv.fit(X_train, y_train)
     end_time_cv = time.perf_counter()
     
-    target_folder_path = os.path.join(OUTPUTS_PATH, data_type, type_of_model, experiment_name, model_key_path)
+    target_folder_path = os.path.join(base_path, data_type, type_of_model, experiment_name, model_key_path)
     if os.path.exists(target_folder_path):
         shutil.rmtree(target_folder_path, ignore_errors=True)
     os.makedirs(target_folder_path, exist_ok=True)
@@ -549,6 +553,10 @@ def run_best_params_model(data:Tuple[Any,Any]):
 
 
 def run_all():
+    """
+    Train and evaluate all possible models
+    """
+
     _,total_models,keys = get_models()
 
     for experiment_type, experiment_func in zip(
@@ -593,22 +601,85 @@ def run_all():
                             [name],
                             keys)
                     )
-                    pool.map(experiment_func, [ (task, dataset) for task in tasks])
+                    pool.map(experiment_func, [ (task, dataset, OUTPUTS_PATH) for task in tasks])
+
+def run_best():
+    """
+    Train and evaluate all models with the selected best features.
+    this one is meant to be run at the end, after running with run_all()
+    and analyzing the data.
+    """
+    _,total_models,keys = get_models()
+
+
+
+    for experiment_type, experiment_func in zip(
+            ('default', 'best-params'),
+            (run_default_model, run_best_params_model)
+    ):
+        print(f"[i] Doing {experiment_type}")
+
+        data = setup_data(get_dataset_best_columns)
+        with Manager() as mg:
+            dataset = mg.Namespace()
+            dataset.not_augmented = data["not_augmented"]
+            dataset.augmented = data["augmented"]
+            dataset.cols = SELECTED_BEST_FEATURES
+
+            # save the modified datasets for later analysis
+            for t in ['augmented', 'not_augmented']:
+                np.save(os.path.join(BEST_PATH, 'x_train.npy'), data[t][0])
+                np.save(os.path.join(BEST_PATH, 'x_test.npy'), data[t][1])
+                np.save(os.path.join(BEST_PATH, 'y_train.npy'), data[t][2])
+                np.save(os.path.join(BEST_PATH, 'y_test.npy'), data[t][3])
+
+            # *2 because we are going to run both augmented and not augmented at once
+            with Pool(processes=total_models*2) as pool:
+                tasks = list(
+                    product(
+                        ['augmented', 'not_augmented'], 
+                        [experiment_type], 
+                        ['best-features'],
+                        keys)
+                )
+                pool.map(experiment_func, [ (task, dataset, BEST_PATH) for task in tasks])
 
 if __name__ == "__main__":
-    if os.path.exists(OUTPUTS_PATH):
-        print(f"  THE PATH {OUTPUTS_PATH} already exists")
-        print("   This may indicate that You've already run this before!")
-        print("   By running it again it will delete all the previous files")
-        print("   Are you sure of that?")
 
-        if(input('[y (delete) / any key (cancel)]: ').lower() != 'y'):
-            sys.exit(0)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--step', choices=['all', 'best'], default='all')
 
-        shutil.rmtree(OUTPUTS_PATH)
+    args = parser.parse_args()
+
+    if args.step == 'all':
+        if os.path.exists(OUTPUTS_PATH):
+            print(f"  THE PATH {OUTPUTS_PATH} already exists")
+            print("   This may indicate that You've already run this before!")
+            print("   By running it again it will delete all the previous files")
+            print("   Are you sure of that?")
+
+            if(input('[y (delete) / any key (cancel)]: ').lower() != 'y'):
+                sys.exit(0)
+
+            shutil.rmtree(OUTPUTS_PATH)
+
         os.makedirs(OUTPUTS_PATH, exist_ok=True)
+        run_all()
 
-    run_all()
+    elif args.step == 'best':
+        if os.path.exists(BEST_PATH):
+            print(f"  THE PATH {BEST_PATH} already exists")
+            print("   This may indicate that You've already run this before!")
+            print("   By running it again it will delete all the previous files")
+            print("   Are you sure of that?")
+
+            if(input('[y (delete) / any key (cancel)]: ').lower() != 'y'):
+                sys.exit(0)
+
+            shutil.rmtree(BEST_PATH)
+
+        os.makedirs(BEST_PATH, exist_ok=True)
+        run_best()
 
 
 

@@ -21,7 +21,8 @@ from constants import (
     RAW_COLUMNS, 
     OURS_COLUMNS, 
     CAIDE_COLUMNS,
-    ALL_COLUMNS
+    ALL_COLUMNS,
+    SELECTED_BEST_FEATURES
 )
 
 def format_columns(df:pd.DataFrame):
@@ -187,3 +188,9 @@ def get_dataset_ALL_columns(dataset:pd.DataFrame) -> pd.DataFrame:
     Get subdataset based on all columns data
     """
     return dataset[ALL_COLUMNS]
+
+def get_dataset_best_columns(dataset:pd.DataFrame) -> pd.DataFrame:
+    """
+    Get subdataset based on the best columns data
+    """
+    return dataset[SELECTED_BEST_FEATURES]
