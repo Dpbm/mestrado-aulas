@@ -1,4 +1,4 @@
-.PHONY: analysis model
+.PHONY: analysis model best comp dashboard
 
 SHELL := /usr/bin/bash
 
@@ -13,3 +13,6 @@ best:
 
 comp:
 	uv run predict_kaggle.py
+
+dashboard:
+	uv run streamlit run dashboard.py
