@@ -13,9 +13,10 @@ from sklearn.compose import ColumnTransformer
 from constants import RANDOM_STATE
 from format_data import format_columns,normalize_data
 
-MODEL_PATH = os.path.join("model", "model.pkl")
-TRAIN_X_PATH = os.path.join("model", "x_train.npy")
-TRAIN_Y_PATH = os.path.join("model", "y_train.npy")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR,"model", "model.pkl")
+TRAIN_X_PATH = os.path.join(BASE_DIR,"model", "x_train.npy")
+TRAIN_Y_PATH = os.path.join(BASE_DIR,"model", "y_train.npy")
 CLASSES = {
     0:"Doesn't Have Alzheimer",
     1:"Has Alzheimer",
