@@ -234,7 +234,7 @@ if not st.session_state.loading and st.session_state.probs is not None:
         else:
             with st.container(border=True):
                 st.header("Thanks for your contribution!")
-                st.write("You vote is essential for the developmente of this model.")
+                st.write("You vote is essential for the development of this model.")
 
 
 
