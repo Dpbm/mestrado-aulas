@@ -74,7 +74,7 @@ from format_data import (
     | YES | default  | raw-CAIDE    |
     | YES | best     | raw-CAIDE    |
 
-    so 12 experiments, across 16 models
+    so 12 experiments, across 18 models
 """
 
 
@@ -128,8 +128,22 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
                     'max_depth':[2, 3, 5, 6]
                 }
             },
-            "adaboost":{
+            "adaboost":{ #Adaboost by default uses tree
                 "model":partial(AdaBoostClassifier,random_state=RANDOM_STATE),
+                'params': {
+                    'n_estimators': [30, 50, 70],
+                    'learning_rate': [0.5, 0.8, 1]
+                }
+            },
+            "adaboost-svm":{ 
+                "model":partial(AdaBoostClassifier,random_state=RANDOM_STATE, estimator=SVC(random_state=RANDOM_STATE)),
+                'params': {
+                    'n_estimators': [30, 50, 70],
+                    'learning_rate': [0.5, 0.8, 1]
+                }
+            },
+            "adaboost-logistic":{ 
+                "model":partial(AdaBoostClassifier,random_state=RANDOM_STATE, estimator=LogisticRegression(random_state=RANDOM_STATE)),
                 'params': {
                     'n_estimators': [30, 50, 70],
                     'learning_rate': [0.5, 0.8, 1]
@@ -227,12 +241,13 @@ def get_models() -> Tuple[Dict[str,Any], int, List[str]]:
     }
 
     key_paths = []
+    total_models = 0
     for k1 in models.keys():
         for k2 in models[k1].keys():
             key_paths.append(f'{k1}_{k2}')
+            total_models += 1 
 
-    TOTAL_MODELS = 16
-    return models,TOTAL_MODELS,key_paths
+    return models,total_models,key_paths
 
 def get_model_by_key(key:str) -> Dict[str,Any]:
     """
@@ -628,10 +643,12 @@ def run_best():
 
             # save the modified datasets for later analysis
             for t in ['augmented', 'not_augmented']:
-                np.save(os.path.join(BEST_PATH, 'x_train.npy'), data[t][0])
-                np.save(os.path.join(BEST_PATH, 'x_test.npy'), data[t][1])
-                np.save(os.path.join(BEST_PATH, 'y_train.npy'), data[t][2])
-                np.save(os.path.join(BEST_PATH, 'y_test.npy'), data[t][3])
+                base_path = os.path.join(BEST_PATH,t)
+                os.makedirs(base_path, exist_ok=True)
+                np.save(os.path.join(base_path, 'x_train.npy'), data[t][0])
+                np.save(os.path.join(base_path, 'x_test.npy'), data[t][1])
+                np.save(os.path.join(base_path, 'y_train.npy'), data[t][2])
+                np.save(os.path.join(base_path, 'y_test.npy'), data[t][3])
 
             # *2 because we are going to run both augmented and not augmented at once
             with Pool(processes=total_models*2) as pool:
@@ -680,6 +697,5 @@ if __name__ == "__main__":
 
         os.makedirs(BEST_PATH, exist_ok=True)
         run_best()
-
 
 
