@@ -11,6 +11,7 @@ dependencies = [
     "jupyterlab>=4.6.4",
     "kagglehub>=1.0.2",
     "matplotlib>=3.11.2",
+    "mlxtend>=0.25.0",
     "numpy>=2.5.3",
     "pandas>=3.0.6",
     "plotly[express]>=7.1.0",
