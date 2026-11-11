@@ -14,22 +14,26 @@ from constants import (
     DATASET_PATH, 
     FEATURES_LISTS, 
     SELECTED_BEST_FEATURES,
-    BEST_PATH
+    BEST_PATH,
+    FEATURES_MAPPING
 )
 
+
 if __name__ == "__main__":
-    for columns_name,columns in FEATURES_LISTS:
-        print(f'[i] Using columns: {columns_name} ')
+    TARGET_DF_TYPE = "augmented"
 
-        model_file_path = os.path.join(
-                OUTPUTS_PATH, 
-                'augmented', 
-                'best-params' if columns_name != 'ours' else 'default', 
-                columns_name, 
-                'boosting_xgboost' if columns_name != 'ours' else 'stacking_logistic',
-                'model.pkl')
+    df = pd.read_csv(os.path.join(DATASET_PATH, "best_models.csv"))
+    df = df.loc[df["dataset_type"] == TARGET_DF_TYPE]
 
-        with open(model_file_path, 'rb') as model_file:
+    for row in df.itertuples():
+        print(f'[i] Using columns: {row.columns} ')
+        path = os.path.join(OUTPUTS_PATH, TARGET_DF_TYPE, row.params_type, row.columns, row.model, "model.pkl") \
+                    if row.columns != "best" \
+                    else \
+                os.path.join(OUTPUTS_PATH, "best-features", TARGET_DF_TYPE, row.params_type, "best-features", row.model, "model.pkl") 
+
+        print(f"model path: {path}")
+        with open(path, 'rb') as model_file:
             print("[i] Loading parts ...")
             model = load(model_file)
             comp_df = pd.read_csv(DATASET_EVAL_FILE)
@@ -39,41 +43,9 @@ if __name__ == "__main__":
             comp_df = normalize_data(comp_df)
 
             print("[i] Predicting ...")
-            pred = model.predict(comp_df[columns])
+            pred = model.predict(comp_df[FEATURES_MAPPING[row.columns]])
             comp_df['Diagnosis'] = pred
 
             print("[i] saving predictions ...")
-            csv_path = os.path.join(DATASET_PATH, f'pred_{columns_name}.csv')
+            csv_path = os.path.join(DATASET_PATH, f'pred_{row.columns}.csv')
             comp_df[['PatientID', 'Diagnosis']].to_csv(csv_path, index=False)
-
-    print('-'*40)
-    print('[i] Using best features ...')
-    model_file_path = os.path.join(
-        BEST_PATH,
-        'augmented',
-        'default',
-        'best-features',
-        'stacking_forest',
-        'model.pkl'
-    )
-        
-    with open(model_file_path, 'rb') as model_file:
-        print("[i] Loading parts ...")
-        model = load(model_file)
-        comp_df = pd.read_csv(DATASET_EVAL_FILE)
-
-        print('[i] Normalizing data ...')
-        format_columns(comp_df)
-        comp_df = normalize_data(comp_df)
-
-        print("[i] Predicting ...")
-        pred = model.predict(comp_df[SELECTED_BEST_FEATURES])
-        comp_df['Diagnosis'] = pred
-
-        print("[i] saving predictions ...")
-        csv_path = os.path.join(DATASET_PATH, 'pred_best.csv')
-        comp_df[['PatientID', 'Diagnosis']].to_csv(csv_path, index=False)
-
-
-
-
