@@ -1,6 +1,8 @@
 # Projeto Mineração de Dados
 
-Nosso objetivo com este projeto era aplicar indíces de saúde como uma forma de feature engineering em modelos de classificação para a predição de alzheimer, estando os índices presentes em:
+Nosso objetivo com este projeto, era aplicar indíces de saúde como uma forma de feature engineering em modelos de classificação para a predição de alzheimer. 
+
+ Os índices usados estão presentes em:
 
 - T. T. Vu et al., “Favorable Cardiovascular Health at Young and Middle Ages and Dementia in Older Age—The CHA Study,” Journal of the American Heart Association, vol. 8, no. 1, p. e009730, Jan. 2019, doi: 10.1161/JAHA.118.009730.
 - K. Dhana, D. A. Evans, K. B. Rajan, D. A. Bennett, and M. C. Morris, “Healthy lifestyle and the risk of Alzheimer dementia,” Neurology, vol. 95, no. 4, pp. e374–e383, Jul. 2020, doi: 10.1212/WNL.0000000000009816.
@@ -8,7 +10,7 @@ Nosso objetivo com este projeto era aplicar indíces de saúde como uma forma de
 - M. Kivipelto, F. Mangialasche, and T. Ngandu, “Lifestyle interventions to prevent cognitive impairment, dementia and Alzheimer disease,” Nat Rev Neurol, vol. 14, no. 11, pp. 653–666, Nov. 2018, doi: 10.1038/s41582-018-0070-3.
 
 
-Para isso, neste projeto são testados os seguintes modelos de classificação:
+Além disso, os modelos de classificação utilizados são:
 
 - baselines:
     - Decision Tree
@@ -30,7 +32,7 @@ O workflow utilizado é o seguinte:
 
 ![workflow](./assets/flow.png)
 
-Sendo que cada experimento é executado em paralelo. No total 288 experimentos são feitos.
+Sendo que cada experimento é executado em paralelo. No total 288 experimentos foram feitos.
 
 ## Conclusões
 
